@@ -1,0 +1,1227 @@
+{
+  "schema_version": "2026-03-19-publish-v1",
+  "benchmark": "locomo",
+  "run_id": "2026-03-10-series1",
+  "published_at": "2026-03-19T08:04:59.601001059+00:00",
+  "source": {
+    "path": "bench/locomo/results/local/series1.json",
+    "fingerprint": "09968a2151354b2f"
+  },
+  "public_artifacts": {
+    "summary_path": "summary.json",
+    "questions_path": "questions.jsonl.gz"
+  },
+  "timestamp": "2026-03-19T08:04:54.165581272+00:00",
+  "tag": "series1",
+  "commit": "59cdf1d3364a",
+  "judge_model": "anthropic/claude-sonnet-4-6",
+  "retain_model": "anthropic/claude-sonnet-4-6",
+  "reflect_model": "anthropic/claude-sonnet-4-6",
+  "embedding_model": "local/bge-small-en-v1.5",
+  "reranker_model": "local/ms-marco-MiniLM-L-6-v2",
+  "consolidation_strategy": "end",
+  "total_questions": 1540,
+  "accuracy": 0.9123376623376624,
+  "mean_f1": 0.06414457088173926,
+  "mean_evidence_recall": 0.0025974025974025974,
+  "per_category": {
+    "single-hop": {
+      "accuracy": 0.9042553191489362,
+      "mean_f1": 0.04494674866861526,
+      "mean_evidence_recall": 0.0,
+      "count": 282
+    },
+    "open-domain": {
+      "accuracy": 0.9381688466111772,
+      "mean_f1": 0.06944664551581746,
+      "mean_evidence_recall": 0.0,
+      "count": 841
+    },
+    "multi-hop": {
+      "accuracy": 0.9252336448598132,
+      "mean_f1": 0.07640387669949528,
+      "mean_evidence_recall": 0.0,
+      "count": 321
+    },
+    "temporal": {
+      "accuracy": 0.6666666666666666,
+      "mean_f1": 0.033097736812379555,
+      "mean_evidence_recall": 0.041666666666666664,
+      "count": 96
+    }
+  },
+  "per_conversation": {
+    "conv-43": {
+      "bank_id": "01KKGB3SD8A5GAWGT7VB1DCF43",
+      "accuracy": 0.8932584269662921,
+      "mean_f1": 0.06060652425547942,
+      "mean_evidence_recall": 0.0,
+      "count": 178,
+      "ingest_time_s": 11086.668770771,
+      "consolidation_time_s": 2707.132618941,
+      "qa_time_s": 1747.336904515,
+      "total_time_s": 15541.138294227,
+      "stage_metrics": {
+        "retain_extract": {
+          "input_tokens": 267233,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 86119,
+          "calls": 95,
+          "errors": 0,
+          "latency_ms": 965108
+        },
+        "retain_resolve": {
+          "input_tokens": 429,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 28,
+          "calls": 7,
+          "errors": 0,
+          "latency_ms": 22201
+        },
+        "retain_graph": {
+          "input_tokens": 77708,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 3000,
+          "calls": 750,
+          "errors": 0,
+          "latency_ms": 1743997
+        },
+        "retain_opinion": {
+          "input_tokens": 351719,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 15416,
+          "calls": 3369,
+          "errors": 0,
+          "latency_ms": 8317017
+        },
+        "reflect": {
+          "input_tokens": 4946623,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 221941,
+          "calls": 702,
+          "errors": 0,
+          "latency_ms": 5386997
+        },
+        "consolidate": {
+          "input_tokens": 220055,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 60587,
+          "calls": 89,
+          "errors": 0,
+          "latency_ms": 919560
+        },
+        "judge": {
+          "input_tokens": 102680,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 9256,
+          "calls": 178,
+          "errors": 0,
+          "latency_ms": 507565
+        }
+      },
+      "bank_stats": {
+        "sessions_ingested": 29,
+        "turns_ingested": 680,
+        "facts_stored": 915,
+        "entities_resolved": 1260,
+        "links_created": 228779,
+        "opinions_reinforced": 1429,
+        "opinions_weakened": 23,
+        "observations_created": 60,
+        "observations_updated": 186,
+        "final_fact_count": 975,
+        "final_observation_count": 60,
+        "final_opinion_count": 210,
+        "final_entity_count": 53
+      }
+    },
+    "conv-47": {
+      "bank_id": "01KKE18MXMZFP1HBFAGHN13NM4",
+      "accuracy": 0.9266666666666666,
+      "mean_f1": 0.06497949106809822,
+      "mean_evidence_recall": 0.0,
+      "count": 150,
+      "ingest_time_s": 4969.905956159,
+      "consolidation_time_s": 2973.905898304,
+      "qa_time_s": 1284.632293527,
+      "total_time_s": 9228.44414799,
+      "stage_metrics": {
+        "retain_extract": {
+          "input_tokens": 262473,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 89980,
+          "calls": 94,
+          "errors": 0,
+          "latency_ms": 922808
+        },
+        "retain_resolve": {
+          "input_tokens": 251,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 16,
+          "calls": 4,
+          "errors": 0,
+          "latency_ms": 8105
+        },
+        "retain_graph": {
+          "input_tokens": 82332,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 3212,
+          "calls": 803,
+          "errors": 0,
+          "latency_ms": 1129442
+        },
+        "retain_opinion": {
+          "input_tokens": 214463,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 9682,
+          "calls": 2069,
+          "errors": 0,
+          "latency_ms": 2866972
+        },
+        "reflect": {
+          "input_tokens": 3739252,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 147989,
+          "calls": 556,
+          "errors": 0,
+          "latency_ms": 3499877
+        },
+        "consolidate": {
+          "input_tokens": 231138,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 47285,
+          "calls": 92,
+          "errors": 0,
+          "latency_ms": 759869
+        },
+        "judge": {
+          "input_tokens": 75774,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 7282,
+          "calls": 150,
+          "errors": 0,
+          "latency_ms": 323291
+        }
+      },
+      "bank_stats": {
+        "sessions_ingested": 31,
+        "turns_ingested": 689,
+        "facts_stored": 902,
+        "entities_resolved": 1289,
+        "links_created": 254538,
+        "opinions_reinforced": 663,
+        "opinions_weakened": 25,
+        "observations_created": 91,
+        "observations_updated": 141,
+        "final_fact_count": 993,
+        "final_observation_count": 91,
+        "final_opinion_count": 169,
+        "final_entity_count": 42
+      }
+    },
+    "conv-48": {
+      "bank_id": "01KKDQNPQ1P4ZRNXD3E9YBPSW5",
+      "accuracy": 0.9057591623036648,
+      "mean_f1": 0.08244351609167827,
+      "mean_evidence_recall": 0.0,
+      "count": 191,
+      "ingest_time_s": 4332.366861878,
+      "consolidation_time_s": 3171.449051437,
+      "qa_time_s": 1687.96132104,
+      "total_time_s": 9191.777234355,
+      "stage_metrics": {
+        "retain_extract": {
+          "input_tokens": 250540,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 88477,
+          "calls": 89,
+          "errors": 0,
+          "latency_ms": 859973
+        },
+        "retain_resolve": {
+          "input_tokens": 119,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 8,
+          "calls": 2,
+          "errors": 0,
+          "latency_ms": 2550
+        },
+        "retain_graph": {
+          "input_tokens": 78271,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 2880,
+          "calls": 720,
+          "errors": 0,
+          "latency_ms": 910297
+        },
+        "retain_opinion": {
+          "input_tokens": 229212,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 9408,
+          "calls": 2096,
+          "errors": 0,
+          "latency_ms": 2517694
+        },
+        "reflect": {
+          "input_tokens": 4684639,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 194188,
+          "calls": 668,
+          "errors": 0,
+          "latency_ms": 4200474
+        },
+        "consolidate": {
+          "input_tokens": 248501,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 60770,
+          "calls": 91,
+          "errors": 0,
+          "latency_ms": 932665
+        },
+        "judge": {
+          "input_tokens": 105593,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 9842,
+          "calls": 191,
+          "errors": 0,
+          "latency_ms": 381642
+        }
+      },
+      "bank_stats": {
+        "sessions_ingested": 30,
+        "turns_ingested": 681,
+        "facts_stored": 879,
+        "entities_resolved": 1112,
+        "links_created": 237576,
+        "opinions_reinforced": 1072,
+        "opinions_weakened": 14,
+        "observations_created": 79,
+        "observations_updated": 171,
+        "final_fact_count": 958,
+        "final_observation_count": 79,
+        "final_opinion_count": 151,
+        "final_entity_count": 32
+      }
+    },
+    "conv-50": {
+      "bank_id": "01KKHDPVBHBK0PF44SHB3S31WZ",
+      "accuracy": 0.9177215189873418,
+      "mean_f1": 0.05522867475116557,
+      "mean_evidence_recall": 0.012658227848101266,
+      "count": 158,
+      "ingest_time_s": 7354.724145082,
+      "consolidation_time_s": 2253.400757296,
+      "qa_time_s": 1435.099567761,
+      "total_time_s": 11043.224470139,
+      "stage_metrics": {
+        "retain_extract": {
+          "input_tokens": 267693,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 73351,
+          "calls": 96,
+          "errors": 0,
+          "latency_ms": 857777
+        },
+        "retain_resolve": {
+          "input_tokens": 122,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 8,
+          "calls": 2,
+          "errors": 0,
+          "latency_ms": 3622
+        },
+        "retain_graph": {
+          "input_tokens": 70253,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 2760,
+          "calls": 690,
+          "errors": 0,
+          "latency_ms": 1646690
+        },
+        "retain_opinion": {
+          "input_tokens": 242003,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 10386,
+          "calls": 2291,
+          "errors": 0,
+          "latency_ms": 4819693
+        },
+        "reflect": {
+          "input_tokens": 4377890,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 209609,
+          "calls": 625,
+          "errors": 0,
+          "latency_ms": 5039026
+        },
+        "consolidate": {
+          "input_tokens": 189058,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 56806,
+          "calls": 76,
+          "errors": 0,
+          "latency_ms": 831176
+        },
+        "judge": {
+          "input_tokens": 96550,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 8031,
+          "calls": 158,
+          "errors": 0,
+          "latency_ms": 383219
+        }
+      },
+      "bank_stats": {
+        "sessions_ingested": 30,
+        "turns_ingested": 568,
+        "facts_stored": 754,
+        "entities_resolved": 1058,
+        "links_created": 183101,
+        "opinions_reinforced": 1069,
+        "opinions_weakened": 17,
+        "observations_created": 46,
+        "observations_updated": 168,
+        "final_fact_count": 800,
+        "final_observation_count": 46,
+        "final_opinion_count": 147,
+        "final_entity_count": 25
+      }
+    },
+    "conv-30": {
+      "bank_id": "01KKDHC9AMS9TZPTHJX989048Z",
+      "accuracy": 0.8888888888888888,
+      "mean_f1": 0.06124630718028158,
+      "mean_evidence_recall": 0.0,
+      "count": 81,
+      "ingest_time_s": 2146.71471845,
+      "consolidation_time_s": 1202.177442351,
+      "qa_time_s": 629.370198115,
+      "total_time_s": 3978.262358916,
+      "stage_metrics": {
+        "retain_extract": {
+          "input_tokens": 158841,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 48478,
+          "calls": 57,
+          "errors": 0,
+          "latency_ms": 485236
+        },
+        "retain_graph": {
+          "input_tokens": 43603,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 1680,
+          "calls": 420,
+          "errors": 0,
+          "latency_ms": 457040
+        },
+        "retain_opinion": {
+          "input_tokens": 110070,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 4549,
+          "calls": 1030,
+          "errors": 0,
+          "latency_ms": 1186864
+        },
+        "reflect": {
+          "input_tokens": 2168988,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 90939,
+          "calls": 312,
+          "errors": 0,
+          "latency_ms": 2016122
+        },
+        "consolidate": {
+          "input_tokens": 102106,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 34644,
+          "calls": 50,
+          "errors": 0,
+          "latency_ms": 460943
+        },
+        "judge": {
+          "input_tokens": 45307,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 4371,
+          "calls": 81,
+          "errors": 0,
+          "latency_ms": 144000
+        }
+      },
+      "bank_stats": {
+        "sessions_ingested": 19,
+        "turns_ingested": 369,
+        "facts_stored": 463,
+        "entities_resolved": 608,
+        "links_created": 90215,
+        "opinions_reinforced": 601,
+        "opinions_weakened": 10,
+        "observations_created": 31,
+        "observations_updated": 88,
+        "final_fact_count": 494,
+        "final_observation_count": 31,
+        "final_opinion_count": 67,
+        "final_entity_count": 11
+      }
+    },
+    "conv-41": {
+      "bank_id": "01KKJGFZCFMXN2CDDNHRJANM3C",
+      "accuracy": 0.9605263157894736,
+      "mean_f1": 0.06315019202377242,
+      "mean_evidence_recall": 0.0,
+      "count": 152,
+      "ingest_time_s": 5014.056934926,
+      "consolidation_time_s": 2370.572052787,
+      "qa_time_s": 1412.317530346,
+      "total_time_s": 8796.946518059,
+      "stage_metrics": {
+        "retain_extract": {
+          "input_tokens": 284658,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 81960,
+          "calls": 102,
+          "errors": 0,
+          "latency_ms": 845776
+        },
+        "retain_resolve": {
+          "input_tokens": 58,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 4,
+          "calls": 1,
+          "errors": 0,
+          "latency_ms": 1003
+        },
+        "retain_graph": {
+          "input_tokens": 78389,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 3040,
+          "calls": 760,
+          "errors": 0,
+          "latency_ms": 1033840
+        },
+        "retain_opinion": {
+          "input_tokens": 241595,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 10241,
+          "calls": 2329,
+          "errors": 0,
+          "latency_ms": 3103898
+        },
+        "reflect": {
+          "input_tokens": 3903694,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 184978,
+          "calls": 571,
+          "errors": 0,
+          "latency_ms": 4350062
+        },
+        "consolidate": {
+          "input_tokens": 208037,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 50407,
+          "calls": 85,
+          "errors": 0,
+          "latency_ms": 755912
+        },
+        "judge": {
+          "input_tokens": 89200,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 7433,
+          "calls": 152,
+          "errors": 0,
+          "latency_ms": 312481
+        }
+      },
+      "bank_stats": {
+        "sessions_ingested": 32,
+        "turns_ingested": 663,
+        "facts_stored": 818,
+        "entities_resolved": 1004,
+        "links_created": 207268,
+        "opinions_reinforced": 1404,
+        "opinions_weakened": 17,
+        "observations_created": 71,
+        "observations_updated": 146,
+        "final_fact_count": 889,
+        "final_observation_count": 71,
+        "final_opinion_count": 141,
+        "final_entity_count": 18
+      }
+    },
+    "conv-49": {
+      "bank_id": "01KKJAB34KAGZ359GZV6SG4G91",
+      "accuracy": 0.9102564102564102,
+      "mean_f1": 0.06322086084609918,
+      "mean_evidence_recall": 0.0,
+      "count": 156,
+      "ingest_time_s": 2966.525411118,
+      "consolidation_time_s": 2088.069726222,
+      "qa_time_s": 1309.930179006,
+      "total_time_s": 6364.525316346,
+      "stage_metrics": {
+        "retain_extract": {
+          "input_tokens": 212660,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 64058,
+          "calls": 76,
+          "errors": 0,
+          "latency_ms": 667326
+        },
+        "retain_graph": {
+          "input_tokens": 57328,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 2200,
+          "calls": 550,
+          "errors": 0,
+          "latency_ms": 753148
+        },
+        "retain_opinion": {
+          "input_tokens": 125751,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 5449,
+          "calls": 1203,
+          "errors": 0,
+          "latency_ms": 1525154
+        },
+        "reflect": {
+          "input_tokens": 4115337,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 179766,
+          "calls": 575,
+          "errors": 0,
+          "latency_ms": 4173283
+        },
+        "consolidate": {
+          "input_tokens": 182858,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 42587,
+          "calls": 66,
+          "errors": 0,
+          "latency_ms": 770209
+        },
+        "judge": {
+          "input_tokens": 93934,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 8322,
+          "calls": 156,
+          "errors": 0,
+          "latency_ms": 516000
+        }
+      },
+      "bank_stats": {
+        "sessions_ingested": 25,
+        "turns_ingested": 509,
+        "facts_stored": 622,
+        "entities_resolved": 811,
+        "links_created": 138595,
+        "opinions_reinforced": 566,
+        "opinions_weakened": 16,
+        "observations_created": 58,
+        "observations_updated": 127,
+        "final_fact_count": 680,
+        "final_observation_count": 58,
+        "final_opinion_count": 99,
+        "final_entity_count": 13
+      }
+    },
+    "conv-26": {
+      "bank_id": "01KKCWTVPYTTEWAD6PZ0JTCV74",
+      "accuracy": 0.9473684210526316,
+      "mean_f1": 0.06553112250963128,
+      "mean_evidence_recall": 0.013157894736842105,
+      "count": 152,
+      "ingest_time_s": 4898.389648298,
+      "consolidation_time_s": 1922.559943982,
+      "qa_time_s": 1293.963903724,
+      "total_time_s": 8114.913496003999,
+      "stage_metrics": {
+        "retain_extract": {
+          "input_tokens": 183264,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 66017,
+          "calls": 65,
+          "errors": 0,
+          "latency_ms": 653418
+        },
+        "retain_graph": {
+          "input_tokens": 57642,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 2200,
+          "calls": 550,
+          "errors": 0,
+          "latency_ms": 991908
+        },
+        "retain_opinion": {
+          "input_tokens": 193583,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 8333,
+          "calls": 1859,
+          "errors": 0,
+          "latency_ms": 3229794
+        },
+        "reflect": {
+          "input_tokens": 3985689,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 193189,
+          "calls": 581,
+          "errors": 0,
+          "latency_ms": 4624188
+        },
+        "consolidate": {
+          "input_tokens": 167620,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 41942,
+          "calls": 69,
+          "errors": 0,
+          "latency_ms": 672210
+        },
+        "judge": {
+          "input_tokens": 90847,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 7855,
+          "calls": 152,
+          "errors": 0,
+          "latency_ms": 416627
+        }
+      },
+      "bank_stats": {
+        "sessions_ingested": 19,
+        "turns_ingested": 419,
+        "facts_stored": 674,
+        "entities_resolved": 816,
+        "links_created": 147122,
+        "opinions_reinforced": 962,
+        "opinions_weakened": 19,
+        "observations_created": 59,
+        "observations_updated": 126,
+        "final_fact_count": 733,
+        "final_observation_count": 59,
+        "final_opinion_count": 124,
+        "final_entity_count": 19
+      }
+    },
+    "conv-44": {
+      "bank_id": "01KKEYYZE64ERFA057S6RC0VP4",
+      "accuracy": 0.91869918699187,
+      "mean_f1": 0.05961244929720742,
+      "mean_evidence_recall": 0.0,
+      "count": 123,
+      "ingest_time_s": 10373.848952697,
+      "consolidation_time_s": 2322.652592138,
+      "qa_time_s": 1310.442930144,
+      "total_time_s": 14006.944474979,
+      "stage_metrics": {
+        "retain_extract": {
+          "input_tokens": 257737,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 87723,
+          "calls": 91,
+          "errors": 0,
+          "latency_ms": 916678
+        },
+        "retain_graph": {
+          "input_tokens": 81392,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 3040,
+          "calls": 760,
+          "errors": 0,
+          "latency_ms": 1446107
+        },
+        "retain_opinion": {
+          "input_tokens": 425971,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 17725,
+          "calls": 3941,
+          "errors": 1,
+          "latency_ms": 7970181
+        },
+        "reflect": {
+          "input_tokens": 3451136,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 151866,
+          "calls": 479,
+          "errors": 0,
+          "latency_ms": 4150544
+        },
+        "consolidate": {
+          "input_tokens": 164232,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 49409,
+          "calls": 85,
+          "errors": 0,
+          "latency_ms": 633747
+        },
+        "judge": {
+          "input_tokens": 71562,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 6746,
+          "calls": 124,
+          "errors": 0,
+          "latency_ms": 491875
+        }
+      },
+      "bank_stats": {
+        "sessions_ingested": 28,
+        "turns_ingested": 675,
+        "facts_stored": 841,
+        "entities_resolved": 1135,
+        "links_created": 220315,
+        "opinions_reinforced": 1975,
+        "opinions_weakened": 42,
+        "observations_created": 57,
+        "observations_updated": 128,
+        "final_fact_count": 898,
+        "final_observation_count": 57,
+        "final_opinion_count": 163,
+        "final_entity_count": 11
+      }
+    },
+    "conv-42": {
+      "bank_id": "01KKHZJDA1PPJ3WAS2SWX0MNFD",
+      "accuracy": 0.864321608040201,
+      "mean_f1": 0.06060108416967567,
+      "mean_evidence_recall": 0.0,
+      "count": 199,
+      "ingest_time_s": 5242.701843832,
+      "consolidation_time_s": 2203.648971793,
+      "qa_time_s": 1697.5290071,
+      "total_time_s": 9143.879822725,
+      "stage_metrics": {
+        "retain_extract": {
+          "input_tokens": 242478,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 84232,
+          "calls": 86,
+          "errors": 0,
+          "latency_ms": 867661
+        },
+        "retain_resolve": {
+          "input_tokens": 65,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 4,
+          "calls": 1,
+          "errors": 0,
+          "latency_ms": 1541
+        },
+        "retain_graph": {
+          "input_tokens": 76668,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 2840,
+          "calls": 710,
+          "errors": 0,
+          "latency_ms": 1072670
+        },
+        "retain_opinion": {
+          "input_tokens": 240579,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 10242,
+          "calls": 2240,
+          "errors": 0,
+          "latency_ms": 3271136
+        },
+        "reflect": {
+          "input_tokens": 5610513,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 232581,
+          "calls": 771,
+          "errors": 0,
+          "latency_ms": 5396043
+        },
+        "consolidate": {
+          "input_tokens": 189948,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 58993,
+          "calls": 81,
+          "errors": 0,
+          "latency_ms": 781598
+        },
+        "judge": {
+          "input_tokens": 114832,
+          "cached_prompt_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "output_tokens": 12244,
+          "calls": 203,
+          "errors": 0,
+          "latency_ms": 476500
+        }
+      },
+      "bank_stats": {
+        "sessions_ingested": 29,
+        "turns_ingested": 629,
+        "facts_stored": 813,
+        "entities_resolved": 1059,
+        "links_created": 204122,
+        "opinions_reinforced": 959,
+        "opinions_weakened": 37,
+        "observations_created": 52,
+        "observations_updated": 162,
+        "final_fact_count": 865,
+        "final_observation_count": 52,
+        "final_opinion_count": 168,
+        "final_entity_count": 21
+      }
+    }
+  },
+  "manifest": {
+    "protocol_version": "2026-03-10-config-v1",
+    "profile": "full",
+    "mode": "merge",
+    "config_path": "bench/locomo/configs/question-jobs-5.json",
+    "dataset_path": "data/locomo10.json",
+    "dataset_fingerprint": "8dfd1872bfb58ab8",
+    "command": "target/debug/locomo-bench merge bench/locomo/results/canonical/series1/series1-conv-26.json bench/locomo/results/canonical/series1/series1-conv-30.json bench/locomo/results/canonical/series1/series1-conv-41.json bench/locomo/results/canonical/series1/series1-conv-42.json bench/locomo/results/canonical/series1/series1-conv-43.json bench/locomo/results/canonical/series1/series1-conv-44.json bench/locomo/results/canonical/series1/series1-conv-47.json bench/locomo/results/canonical/series1/series1-conv-48.json bench/locomo/results/canonical/series1/series1-conv-49.json bench/locomo/results/canonical/series1/series1-conv-50.json --out bench/locomo/results/local/series1.json --tag series1 --force",
+    "category_filter": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "selected_conversations": [
+      "conv-26",
+      "conv-30",
+      "conv-41",
+      "conv-42",
+      "conv-43",
+      "conv-44",
+      "conv-47",
+      "conv-48",
+      "conv-49",
+      "conv-50"
+    ],
+    "image_policy": "blip_caption_inline",
+    "ingestion_granularity": "session",
+    "question_concurrency": 5,
+    "conversation_concurrency": 1,
+    "consolidation_strategy": "end",
+    "session_limit": null,
+    "question_limit": null,
+    "raw_json": false,
+    "dirty_worktree": true,
+    "prompt_hashes": {
+      "judge": "bdad9371b9ad2324",
+      "retain_extract": "a6b6ebdc25fc33ce",
+      "retain_resolve_system": "05a96c98f31d2cd9",
+      "retain_resolve_user": "ccc09800fd06a75a",
+      "retain_graph_system": "9ae2b2505f10e8dd",
+      "retain_graph_user": "f1752b7242698955",
+      "retain_opinion": "b703a0c626791577",
+      "reflect_agent": "ec915610b39bf9d3",
+      "consolidate": "fadb2d4186451969",
+      "opinion_merge": "6123818c6c302282"
+    },
+    "runtime_config": {
+      "chunk_max_tokens": 512,
+      "chunk_overlap_tokens": 64,
+      "dedup_threshold": 0.95,
+      "retriever_limit": 20,
+      "recall_rrf_k": 60.0,
+      "rerank_top_n": 50,
+      "reflect_max_iterations": 8,
+      "reflect_max_tokens": null,
+      "retain_extract_reasoning_effort": null,
+      "retain_resolve_reasoning_effort": null,
+      "retain_graph_reasoning_effort": null,
+      "reflect_enable_source_lookup": true,
+      "reflect_reasoning_effort": null,
+      "graph_semantic_threshold": 0.7,
+      "graph_temporal_max_days": 30,
+      "graph_enable_causal": true,
+      "graph_max_causal_checks": 10,
+      "consolidation_batch_size": 8,
+      "consolidation_max_tokens": 4096,
+      "consolidation_recall_budget": 512,
+      "consolidate_reasoning_effort": null,
+      "opinion_merge_reasoning_effort": null,
+      "reflect_budget_tokens": 4096,
+      "judge_temperature": 0.0,
+      "judge_max_tokens": 200,
+      "judge_max_attempts": 3,
+      "qa_updates_memory": false
+    },
+    "source_artifacts": [
+      {
+        "path": "bench/locomo/results/canonical/series1/series1-conv-26.json",
+        "fingerprint": "502637dbfa83750d",
+        "mode": "run",
+        "tag": "series1-conv-26",
+        "commit": "5cedc6d969a1"
+      },
+      {
+        "path": "bench/locomo/results/canonical/series1/series1-conv-30.json",
+        "fingerprint": "6433cb1af14d18c4",
+        "mode": "run",
+        "tag": "series1-conv-30",
+        "commit": "4bd5fdcd649a"
+      },
+      {
+        "path": "bench/locomo/results/canonical/series1/series1-conv-41.json",
+        "fingerprint": "78e459fa616b4b6d",
+        "mode": "run",
+        "tag": "series1-conv-41",
+        "commit": "7c9b3bd0304b"
+      },
+      {
+        "path": "bench/locomo/results/canonical/series1/series1-conv-42.json",
+        "fingerprint": "614e390c78488706",
+        "mode": "run",
+        "tag": "series1-conv-42",
+        "commit": "7c9b3bd0304b"
+      },
+      {
+        "path": "bench/locomo/results/canonical/series1/series1-conv-43.json",
+        "fingerprint": "568b0c5c72322224",
+        "mode": "run",
+        "tag": "series1-conv-43",
+        "commit": "7c9b3bd0304b"
+      },
+      {
+        "path": "bench/locomo/results/canonical/series1/series1-conv-44.json",
+        "fingerprint": "c4da5f5252ca8ca2",
+        "mode": "run",
+        "tag": "series1-conv-44",
+        "commit": "7c9b3bd0304b"
+      },
+      {
+        "path": "bench/locomo/results/canonical/series1/series1-conv-47.json",
+        "fingerprint": "af24eca781309757",
+        "mode": "run",
+        "tag": "series1-conv-47",
+        "commit": "7c9b3bd0304b"
+      },
+      {
+        "path": "bench/locomo/results/canonical/series1/series1-conv-48.json",
+        "fingerprint": "cf70589a37b17c40",
+        "mode": "run",
+        "tag": "series1-conv-48",
+        "commit": "7ba61a435faa"
+      },
+      {
+        "path": "bench/locomo/results/canonical/series1/series1-conv-49.json",
+        "fingerprint": "c6d0183d819279e1",
+        "mode": "run",
+        "tag": "series1-conv-49",
+        "commit": "7c9b3bd0304b"
+      },
+      {
+        "path": "bench/locomo/results/canonical/series1/series1-conv-50.json",
+        "fingerprint": "48c4fc1d2fcdb1d9",
+        "mode": "run",
+        "tag": "series1-conv-50",
+        "commit": "7c9b3bd0304b"
+      }
+    ]
+  },
+  "stage_metrics": {
+    "retain_extract": {
+      "input_tokens": 2387577,
+      "cached_prompt_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 770395,
+      "calls": 851,
+      "errors": 0,
+      "latency_ms": 8041761
+    },
+    "retain_resolve": {
+      "input_tokens": 1044,
+      "cached_prompt_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 68,
+      "calls": 17,
+      "errors": 0,
+      "latency_ms": 39022
+    },
+    "retain_graph": {
+      "input_tokens": 703586,
+      "cached_prompt_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 26852,
+      "calls": 6713,
+      "errors": 0,
+      "latency_ms": 11185139
+    },
+    "retain_opinion": {
+      "input_tokens": 2374946,
+      "cached_prompt_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 101431,
+      "calls": 22427,
+      "errors": 1,
+      "latency_ms": 38808403
+    },
+    "reflect": {
+      "input_tokens": 40983761,
+      "cached_prompt_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 1807046,
+      "calls": 5840,
+      "errors": 0,
+      "latency_ms": 42836616
+    },
+    "consolidate": {
+      "input_tokens": 1903553,
+      "cached_prompt_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 503430,
+      "calls": 784,
+      "errors": 0,
+      "latency_ms": 7517889
+    },
+    "judge": {
+      "input_tokens": 886279,
+      "cached_prompt_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 81382,
+      "calls": 1545,
+      "errors": 0,
+      "latency_ms": 3953200
+    }
+  },
+  "total_stage_usage": {
+    "input_tokens": 49240746,
+    "cached_prompt_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "output_tokens": 3290604,
+    "calls": 38177,
+    "errors": 1,
+    "latency_ms": 112382030
+  },
+  "total_time_s": 95410.31914389798
+}

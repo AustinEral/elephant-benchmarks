@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elephant Benchmarks</title>
+    <style>
+      :root {
+        --bg: #f4f1e8;
+        --surface: #fffaf0;
+        --ink: #1f2a1f;
+        --muted: #576457;
+        --line: #d8cfba;
+        --accent: #235347;
+        --accent-soft: #d8ebe2;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, #f8e8c8 0, transparent 28rem),
+          linear-gradient(180deg, #f4f1e8 0%, #efe7d3 100%);
+      }
+
+      main {
+        max-width: 64rem;
+        margin: 0 auto;
+        padding: 3rem 1.25rem 4rem;
+      }
+
+      header {
+        margin-bottom: 2rem;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 4vw, 4rem);
+        line-height: 1;
+        margin: 0 0 0.75rem;
+        letter-spacing: -0.03em;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 42rem;
+        line-height: 1.6;
+      }
+
+      .panel {
+        background: rgba(255, 250, 240, 0.9);
+        border: 1px solid var(--line);
+        border-radius: 1.25rem;
+        padding: 1.25rem;
+        box-shadow: 0 20px 50px rgba(36, 38, 24, 0.08);
+        backdrop-filter: blur(8px);
+      }
+
+      .meta {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .meta-card {
+        padding: 0.9rem 1rem;
+        border-radius: 1rem;
+        background: var(--accent-soft);
+      }
+
+      .meta-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+      }
+
+      .meta-value {
+        margin-top: 0.35rem;
+        font-size: 1.5rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 0.9rem 0.7rem;
+        border-top: 1px solid var(--line);
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--muted);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      .empty,
+      .error {
+        margin-top: 1rem;
+        color: var(--muted);
+      }
+
+      @media (max-width: 720px) {
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+          display: block;
+        }
+
+        thead {
+          display: none;
+        }
+
+        tr {
+          padding: 0.75rem 0;
+          border-top: 1px solid var(--line);
+        }
+
+        td {
+          border: 0;
+          padding: 0.3rem 0;
+        }
+
+        td::before {
+          content: attr(data-label);
+          display: block;
+          color: var(--muted);
+          font-size: 0.8rem;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          margin-bottom: 0.15rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Elephant Benchmarks</h1>
+        <p>
+          Public benchmark history for Elephant. This page reads
+          <code>locomo/index.json</code> and links to per-run artifacts.
+        </p>
+      </header>
+
+      <section class="panel">
+        <div id="meta" class="meta"></div>
+        <div id="state" class="empty">Loading benchmark index...</div>
+        <table id="runs" hidden>
+          <thead>
+            <tr>
+              <th>Run</th>
+              <th>Published</th>
+              <th>Questions</th>
+              <th>Accuracy</th>
+              <th>Artifacts</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script>
+      const meta = document.getElementById("meta");
+      const state = document.getElementById("state");
+      const table = document.getElementById("runs");
+      const tbody = table.querySelector("tbody");
+
+      function metaCard(label, value) {
+        const div = document.createElement("div");
+        div.className = "meta-card";
+        div.innerHTML = `<div class="meta-label">${label}</div><div class="meta-value">${value}</div>`;
+        return div;
+      }
+
+      function fmtPct(value) {
+        return `${(value * 100).toFixed(2)}%`;
+      }
+
+      function link(label, href) {
+        return `<a href="${href}">${label}</a>`;
+      }
+
+      fetch("locomo/index.json")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((index) => {
+          meta.appendChild(metaCard("Benchmark", index.benchmark || "locomo"));
+          meta.appendChild(metaCard("Schema", index.schema_version || "unknown"));
+          meta.appendChild(metaCard("Runs", String(index.runs?.length || 0)));
+
+          if (!index.runs || index.runs.length === 0) {
+            state.textContent = "No published runs yet.";
+            return;
+          }
+
+          state.hidden = true;
+          table.hidden = false;
+
+          for (const run of index.runs) {
+            const tr = document.createElement("tr");
+            const artifacts = [
+              link("summary", run.summary_path),
+              link("questions", run.questions_path),
+            ];
+            if (run.debug_path) {
+              artifacts.push(link("debug", run.debug_path));
+            }
+
+            tr.innerHTML = `
+              <td data-label="Run"><strong>${run.run_id}</strong><br>${run.tag || ""}</td>
+              <td data-label="Published">${new Date(run.published_at).toLocaleString()}</td>
+              <td data-label="Questions">${run.total_questions}</td>
+              <td data-label="Accuracy">${fmtPct(run.accuracy)}</td>
+              <td data-label="Artifacts">${artifacts.join(" · ")}</td>
+            `;
+            tbody.appendChild(tr);
+          }
+        })
+        .catch((error) => {
+          state.className = "error";
+          state.textContent = `Failed to load locomo/index.json: ${error.message}`;
+        });
+    </script>
+  </body>
+</html>

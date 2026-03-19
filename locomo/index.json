@@ -1,0 +1,22 @@
+{
+  "schema_version": "2026-03-19-publish-v1",
+  "benchmark": "locomo",
+  "generated_at": "2026-03-19T08:04:59.601001059+00:00",
+  "runs": [
+    {
+      "run_id": "2026-03-10-series1",
+      "published_at": "2026-03-19T08:04:59.601001059+00:00",
+      "timestamp": "2026-03-19T08:04:54.165581272+00:00",
+      "tag": "series1",
+      "commit": "59cdf1d3364a",
+      "source_artifact": "bench/locomo/results/local/series1.json",
+      "source_fingerprint": "09968a2151354b2f",
+      "total_questions": 1540,
+      "accuracy": 0.9123376623376624,
+      "mean_f1": 0.06414457088173926,
+      "mean_evidence_recall": 0.0025974025974025974,
+      "summary_path": "runs/2026-03-10-series1/summary.json",
+      "questions_path": "runs/2026-03-10-series1/questions.jsonl.gz"
+    }
+  ]
+}
