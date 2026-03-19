@@ -5,26 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Elephant Benchmarks</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Space+Grotesk:wght@400;500;700&display=swap");
 
       :root {
-        --paper: #f5efe3;
-        --paper-strong: #fcf7ee;
-        --ink: #171913;
-        --muted: #5f6457;
-        --line: rgba(23, 25, 19, 0.1);
-        --panel: rgba(255, 251, 244, 0.74);
-        --panel-strong: rgba(255, 251, 244, 0.92);
-        --forest: #24493f;
-        --forest-deep: #183028;
-        --sage: #d9e6d8;
-        --bronze: #b46d3d;
-        --bronze-soft: rgba(180, 109, 61, 0.12);
-        --shadow: 0 28px 80px rgba(27, 32, 25, 0.12);
-        --radius-xl: 2rem;
-        --radius-lg: 1.4rem;
-        --radius-md: 1rem;
-        --content: 78rem;
+        --bg: #08090d;
+        --bg-soft: #11131a;
+        --ink: #f5efe6;
+        --muted: rgba(245, 239, 230, 0.68);
+        --line: rgba(255, 255, 255, 0.11);
+        --line-strong: rgba(255, 255, 255, 0.18);
+        --gold: #f0b36e;
+        --gold-soft: rgba(240, 179, 110, 0.18);
+        --mint: #b6f2dc;
+        --blue: #93afe9;
+        --paper: #e7dfd2;
+        --paper-ink: #161312;
+        --paper-muted: rgba(22, 19, 18, 0.66);
+        --content: 92rem;
+        --shadow: 0 32px 120px rgba(0, 0, 0, 0.38);
       }
 
       * {
@@ -37,24 +35,37 @@
 
       body {
         margin: 0;
+        min-height: 100vh;
         color: var(--ink);
-        font-family: "Manrope", sans-serif;
+        font-family: "Space Grotesk", sans-serif;
         background:
-          radial-gradient(circle at top left, rgba(180, 109, 61, 0.22), transparent 24rem),
-          radial-gradient(circle at right 12rem top 8rem, rgba(36, 73, 63, 0.16), transparent 20rem),
-          linear-gradient(180deg, #f4ede0 0%, #efe6d4 52%, #f7f2e7 100%);
+          radial-gradient(circle at top left, rgba(240, 179, 110, 0.16), transparent 30rem),
+          radial-gradient(circle at 85% 14%, rgba(147, 175, 233, 0.16), transparent 26rem),
+          linear-gradient(180deg, #08090d 0%, #0d1016 44%, #08090d 100%);
       }
 
-      body::before {
+      body::before,
+      body::after {
         content: "";
         position: fixed;
         inset: 0;
-        background-image:
-          linear-gradient(rgba(23, 25, 19, 0.035) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(23, 25, 19, 0.035) 1px, transparent 1px);
-        background-size: 3.25rem 3.25rem;
-        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 90%);
         pointer-events: none;
+      }
+
+      body::before {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.024) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.024) 1px, transparent 1px);
+        background-size: 4rem 4rem;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 88%);
+      }
+
+      body::after {
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.045), transparent 34%),
+          linear-gradient(0deg, rgba(0, 0, 0, 0.28), transparent 18%);
+        mix-blend-mode: screen;
+        opacity: 0.58;
       }
 
       a {
@@ -62,18 +73,11 @@
         text-decoration: none;
       }
 
-      button,
-      input,
-      textarea,
-      select {
-        font: inherit;
-      }
-
-      .shell {
+      .page {
         position: relative;
         max-width: var(--content);
         margin: 0 auto;
-        padding: 1.25rem;
+        padding: 1.1rem;
       }
 
       .masthead {
@@ -81,237 +85,244 @@
         justify-content: space-between;
         align-items: center;
         gap: 1rem;
-        padding: 0.75rem 0 1.5rem;
+        padding: 0.4rem 0 1rem;
       }
 
-      .brand-lockup {
+      .brand {
         display: flex;
         align-items: center;
-        gap: 0.85rem;
+        gap: 0.9rem;
       }
 
       .brand-mark {
-        width: 2.9rem;
-        height: 2.9rem;
+        width: 2.7rem;
+        height: 2.7rem;
         display: grid;
         place-items: center;
-        border-radius: 0.85rem;
-        background:
-          linear-gradient(150deg, rgba(36, 73, 63, 0.95), rgba(24, 48, 40, 0.92));
-        color: var(--paper-strong);
-        box-shadow: 0 16px 36px rgba(24, 48, 40, 0.24);
-        font-size: 1.2rem;
+        border: 1px solid var(--line);
+        border-radius: 0.9rem;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
       }
 
       .brand-copy {
         display: grid;
-        gap: 0.15rem;
+        gap: 0.2rem;
       }
 
       .eyebrow,
-      .micro-label {
+      .micro {
+        font-size: 0.72rem;
         letter-spacing: 0.18em;
         text-transform: uppercase;
-        font-size: 0.72rem;
+      }
+
+      .eyebrow {
         color: var(--muted);
       }
 
       .brand-title {
-        font-size: 0.95rem;
-        font-weight: 800;
-        letter-spacing: 0.04em;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
       }
 
-      .hero {
-        position: relative;
-        overflow: hidden;
-        border: 1px solid rgba(23, 25, 19, 0.08);
-        border-radius: 2.3rem;
-        padding: clamp(1.5rem, 3vw, 2.4rem);
-        background:
-          linear-gradient(140deg, rgba(255, 251, 244, 0.92), rgba(249, 240, 224, 0.72)),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.6), transparent);
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(14px);
-      }
-
-      .hero::before,
-      .hero::after {
-        content: "";
-        position: absolute;
-        border-radius: 999px;
-        pointer-events: none;
-      }
-
-      .hero::before {
-        width: 26rem;
-        height: 26rem;
-        right: -9rem;
-        top: -11rem;
-        background: radial-gradient(circle, rgba(36, 73, 63, 0.14), transparent 66%);
-      }
-
-      .hero::after {
-        width: 18rem;
-        height: 18rem;
-        left: -7rem;
-        bottom: -9rem;
-        background: radial-gradient(circle, rgba(180, 109, 61, 0.12), transparent 66%);
-      }
-
-      .hero-grid {
-        position: relative;
-        display: grid;
-        grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.9fr);
-        gap: 1.2rem;
-      }
-
-      .hero-copy {
-        display: grid;
-        gap: 1.15rem;
-      }
-
-      .hero-title {
-        margin: 0;
-        max-width: 12ch;
-        font-family: "Instrument Serif", serif;
-        font-size: clamp(3.4rem, 8vw, 7.2rem);
-        line-height: 0.92;
-        font-weight: 400;
-        letter-spacing: -0.05em;
-      }
-
-      .hero-title .accent {
-        font-style: italic;
-        color: var(--forest);
-      }
-
-      .hero-body {
-        max-width: 38rem;
-        font-size: 1.02rem;
-        line-height: 1.75;
-        color: var(--muted);
-      }
-
+      .pill-row,
       .hero-actions,
-      .pill-row {
+      .hero-meta,
+      .archive-links {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.8rem;
+        gap: 0.75rem;
       }
 
+      .pill,
       .button,
-      .pill {
+      .archive-link {
         display: inline-flex;
         align-items: center;
         gap: 0.55rem;
+        padding: 0.8rem 1rem;
         border-radius: 999px;
-        padding: 0.82rem 1.15rem;
-        border: 1px solid rgba(23, 25, 19, 0.08);
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
         transition:
           transform 220ms ease,
           border-color 220ms ease,
           background-color 220ms ease;
       }
 
-      .button:hover,
       .pill:hover,
-      .run-card:hover,
-      .conversation-card:hover,
-      .category-card:hover,
-      .spotlight:hover {
+      .button:hover,
+      .archive-link:hover,
+      .hero-panel:hover,
+      .note-panel:hover,
+      .conversation-row:hover,
+      .archive-row:hover {
         transform: translateY(-2px);
+        border-color: var(--line-strong);
+      }
+
+      .pill strong {
+        font-size: 0.95rem;
       }
 
       .button-primary {
-        color: var(--paper-strong);
-        background: linear-gradient(140deg, var(--forest), var(--forest-deep));
-        box-shadow: 0 18px 32px rgba(24, 48, 40, 0.2);
+        color: #111217;
+        background: linear-gradient(135deg, var(--gold), #ffdcb8);
+        border-color: transparent;
       }
 
-      .button-secondary,
-      .pill {
-        background: rgba(255, 251, 244, 0.84);
+      .hero {
+        position: relative;
+        overflow: hidden;
+        min-height: 42rem;
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
+        gap: 1rem;
+        padding: clamp(1.25rem, 3vw, 2rem);
+        border: 1px solid var(--line);
+        border-radius: 2rem;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 28%),
+          linear-gradient(145deg, rgba(13, 14, 19, 0.98), rgba(8, 8, 11, 0.98));
+        box-shadow: var(--shadow);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 16% 16%, rgba(240, 179, 110, 0.14), transparent 22rem),
+          radial-gradient(circle at 84% 28%, rgba(147, 175, 233, 0.16), transparent 24rem),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.045), transparent 34%);
+        pointer-events: none;
+      }
+
+      .hero-copy,
+      .hero-side {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-copy {
+        display: grid;
+        align-content: space-between;
+        gap: 1.5rem;
+      }
+
+      .hero-main {
+        display: grid;
+        gap: 1.1rem;
+        align-content: start;
+      }
+
+      .hero-title {
+        margin: 0;
+        max-width: 10ch;
+        font-size: clamp(4.3rem, 10vw, 8.6rem);
+        line-height: 0.84;
+        letter-spacing: -0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero-title span {
+        display: block;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 0.55em;
+        font-style: italic;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        text-transform: none;
+        color: var(--gold);
+      }
+
+      .hero-body {
+        max-width: 39rem;
+        color: var(--muted);
+        font-size: 1.06rem;
+        line-height: 1.8;
       }
 
       .hero-side {
         display: grid;
-        gap: 0.95rem;
-        align-content: start;
+        align-content: end;
+        gap: 1rem;
       }
 
-      .spotlight {
-        display: grid;
-        gap: 0.9rem;
-        padding: 1.2rem;
-        border-radius: 1.7rem;
-        color: var(--paper-strong);
+      .hero-panel,
+      .note-panel {
+        border: 1px solid var(--line);
+        border-radius: 1.5rem;
         background:
-          linear-gradient(150deg, rgba(23, 48, 40, 0.95), rgba(36, 73, 63, 0.94)),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent);
-        box-shadow: 0 22px 48px rgba(24, 48, 40, 0.24);
+          linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent 24%),
+          rgba(255, 255, 255, 0.025);
+        backdrop-filter: blur(12px);
       }
 
-      .spotlight .micro-label,
-      .spotlight .muted-copy {
-        color: rgba(255, 250, 240, 0.72);
-      }
-
-      .spotlight-score {
-        display: flex;
-        align-items: end;
-        gap: 0.6rem;
+      .hero-panel {
+        padding: 1.25rem;
       }
 
       .score-value {
-        font-size: clamp(3rem, 8vw, 5rem);
+        font-size: clamp(4rem, 9vw, 6.8rem);
         line-height: 0.88;
-        letter-spacing: -0.06em;
-        font-weight: 800;
+        letter-spacing: -0.08em;
+        font-weight: 700;
       }
 
-      .score-unit {
-        padding-bottom: 0.5rem;
-        font-size: 1rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
+      .hero-meta {
+        margin-top: 0.6rem;
+        color: var(--muted);
+        font-size: 0.95rem;
       }
 
-      .score-subtitle {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.55rem 1rem;
-        color: rgba(255, 250, 240, 0.9);
-      }
-
-      .spotlight-grid {
+      .hero-stats {
+        margin-top: 1rem;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.75rem;
+        gap: 0.8rem;
       }
 
-      .spotlight-cell {
-        padding: 0.8rem 0.9rem;
-        border-radius: 1rem;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+      .hero-stat {
+        padding-top: 0.9rem;
+        border-top: 1px solid var(--line);
       }
 
-      .spotlight-cell strong {
+      .hero-stat strong {
         display: block;
         margin-top: 0.3rem;
-        font-size: 1.12rem;
+        font-size: 1.05rem;
       }
 
-      .section {
-        margin-top: 1.25rem;
+      .note-panel {
+        display: grid;
+        gap: 0.9rem;
+        padding: 1.1rem 1.25rem;
+      }
+
+      .note-panel strong {
+        font-size: 1.2rem;
+        line-height: 1.15;
+      }
+
+      .note-panel p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .paper {
+        margin-top: 1rem;
         padding: 1.35rem;
-        border-radius: var(--radius-xl);
-        border: 1px solid rgba(23, 25, 19, 0.08);
-        background: var(--panel);
+        border-radius: 2rem;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.48), rgba(255, 255, 255, 0.08)),
+          var(--paper);
+        color: var(--paper-ink);
         box-shadow: var(--shadow);
-        backdrop-filter: blur(12px);
       }
 
       .section-head {
@@ -319,220 +330,329 @@
         justify-content: space-between;
         align-items: end;
         gap: 1rem;
-        margin-bottom: 1.1rem;
       }
 
       .section-title {
         margin: 0;
-        font-family: "Instrument Serif", serif;
-        font-size: clamp(2rem, 4vw, 3rem);
-        line-height: 0.96;
-        font-weight: 400;
-        letter-spacing: -0.04em;
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        line-height: 0.92;
+        letter-spacing: -0.05em;
+        text-transform: uppercase;
+      }
+
+      .section-title span {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-weight: 600;
+        text-transform: none;
+        color: #7f5128;
       }
 
       .section-copy {
-        max-width: 34rem;
-        color: var(--muted);
-        line-height: 1.65;
+        max-width: 32rem;
+        color: var(--paper-muted);
+        line-height: 1.7;
       }
 
-      .kpi-grid,
-      .category-grid,
-      .conversation-grid,
-      .run-grid {
+      .stat-band {
+        margin-top: 1rem;
         display: grid;
-        gap: 0.95rem;
-      }
-
-      .kpi-grid {
         grid-template-columns: repeat(4, minmax(0, 1fr));
+        border-top: 1px solid rgba(22, 19, 18, 0.14);
+        border-bottom: 1px solid rgba(22, 19, 18, 0.14);
       }
 
-      .category-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+      .stat-cell {
+        padding: 1rem 0.2rem 1rem 0;
       }
 
-      .conversation-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .stat-cell + .stat-cell {
+        padding-left: 1rem;
+        border-left: 1px solid rgba(22, 19, 18, 0.12);
       }
 
-      .run-grid {
-        grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      .stat-cell .micro,
+      .category-row .micro {
+        color: var(--paper-muted);
       }
 
-      .kpi-card,
-      .category-card,
-      .conversation-card,
-      .run-card {
+      .stat-value {
+        margin-top: 0.35rem;
+        font-size: clamp(1.8rem, 4vw, 2.9rem);
+        line-height: 0.94;
+        letter-spacing: -0.06em;
+        font-weight: 700;
+      }
+
+      .paper-grid {
+        margin-top: 1.2rem;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.42fr);
+        gap: 1rem;
+      }
+
+      .paper-panel,
+      .signal-card {
+        border: 1px solid rgba(22, 19, 18, 0.12);
+        border-radius: 1.5rem;
+        background: rgba(255, 255, 255, 0.28);
+      }
+
+      .paper-panel {
+        padding: 1rem 1.1rem;
+      }
+
+      .signal-card {
+        display: grid;
+        align-content: start;
+        gap: 1rem;
+        padding: 1rem 1.1rem;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.35), transparent 55%),
+          rgba(255, 255, 255, 0.18);
+      }
+
+      .category-list,
+      .conversation-list,
+      .archive-list {
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .category-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1.3fr) 0.62fr 0.48fr 0.42fr 0.55fr;
+        gap: 0.8rem;
+        align-items: center;
+        padding: 0.95rem 0;
+        border-top: 1px solid rgba(22, 19, 18, 0.12);
+      }
+
+      .category-row:first-child {
+        border-top: 0;
+        padding-top: 0.2rem;
+      }
+
+      .category-name,
+      .run-name {
+        font-size: 1.02rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .category-score {
+        font-size: 2rem;
+        line-height: 0.92;
+        letter-spacing: -0.05em;
+        font-weight: 700;
+      }
+
+      .signal-value {
+        font-size: 3.2rem;
+        line-height: 0.88;
+        letter-spacing: -0.06em;
+        font-weight: 700;
+      }
+
+      .signal-note,
+      .signal-copy,
+      .archive-meta,
+      .conversation-meta {
+        color: var(--paper-muted);
+        line-height: 1.6;
+      }
+
+      .dark-section {
+        margin-top: 1rem;
+        padding: 1.25rem;
+        border-radius: 2rem;
+        border: 1px solid var(--line);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 22%),
+          linear-gradient(145deg, rgba(14, 15, 20, 0.98), rgba(9, 10, 13, 0.98));
+        box-shadow: var(--shadow);
+      }
+
+      .dark-section .section-copy {
+        color: var(--muted);
+      }
+
+      .conversation-row,
+      .archive-row {
         position: relative;
         overflow: hidden;
-        padding: 1rem;
-        border-radius: var(--radius-lg);
-        border: 1px solid rgba(23, 25, 19, 0.08);
-        background: var(--panel-strong);
-        transition:
-          transform 220ms ease,
-          border-color 220ms ease,
-          box-shadow 220ms ease;
+        padding: 1rem 1.05rem;
+        border: 1px solid var(--line);
+        border-radius: 1.4rem;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent 28%),
+          rgba(255, 255, 255, 0.025);
       }
 
-      .kpi-card::before,
-      .category-card::before,
-      .conversation-card::before,
-      .run-card::before {
+      .conversation-row::before,
+      .archive-row::before {
         content: "";
         position: absolute;
         inset: 0 auto auto 0;
         width: 100%;
-        height: 0.28rem;
-        background: linear-gradient(90deg, var(--forest), var(--bronze));
-        opacity: 0.9;
+        height: 0.16rem;
+        background: linear-gradient(90deg, var(--gold), var(--mint), var(--blue));
       }
 
-      .kpi-value,
-      .category-value,
-      .conversation-value {
-        margin-top: 0.45rem;
-        font-size: clamp(1.6rem, 3vw, 2.5rem);
-        line-height: 1;
+      .conversation-grid {
+        display: grid;
+        grid-template-columns: 5rem minmax(0, 1fr) auto;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .conversation-rank {
+        font-size: 2.4rem;
+        line-height: 0.9;
+        letter-spacing: -0.06em;
+        font-weight: 700;
+        color: rgba(245, 239, 230, 0.7);
+      }
+
+      .conversation-name {
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .conversation-meta {
+        margin-top: 0.25rem;
+        color: var(--muted);
+      }
+
+      .conversation-score {
+        text-align: right;
+        font-size: 2.1rem;
+        line-height: 0.9;
         letter-spacing: -0.05em;
-        font-weight: 800;
-      }
-
-      .category-name,
-      .conversation-name,
-      .run-name {
-        font-size: 1.05rem;
         font-weight: 700;
       }
 
-      .conversation-card {
-        display: grid;
-        gap: 0.95rem;
-      }
-
       .progress-track {
-        height: 0.5rem;
+        margin-top: 0.8rem;
+        height: 0.42rem;
         border-radius: 999px;
-        background: rgba(36, 73, 63, 0.1);
+        background: rgba(255, 255, 255, 0.08);
         overflow: hidden;
       }
 
       .progress-bar {
         height: 100%;
         border-radius: inherit;
-        background: linear-gradient(90deg, var(--bronze), var(--forest));
+        background: linear-gradient(90deg, var(--gold), var(--mint));
       }
 
-      .conversation-meta,
-      .run-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.55rem 0.8rem;
-        color: var(--muted);
-        font-size: 0.9rem;
-      }
-
-      .run-card {
+      .archive-grid {
         display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
         gap: 1rem;
+        align-items: center;
       }
 
-      .artifact-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.55rem;
-      }
-
-      .artifact-link {
-        border-radius: 999px;
-        padding: 0.55rem 0.85rem;
-        background: var(--bronze-soft);
-        color: var(--forest-deep);
-        font-size: 0.9rem;
+      .archive-score {
+        font-size: 2.6rem;
+        line-height: 0.9;
+        letter-spacing: -0.06em;
         font-weight: 700;
       }
 
-      .artifact-link:hover,
-      .button:hover,
-      .pill:hover {
-        border-color: rgba(23, 25, 19, 0.16);
+      .archive-link {
+        background: var(--gold-soft);
+        border-color: transparent;
       }
 
-      .state-panel {
-        padding: 1rem 0 0;
+      .archive-link.alt {
+        background: rgba(182, 242, 220, 0.14);
+      }
+
+      .state {
+        margin-top: 1rem;
         color: var(--muted);
       }
 
       [data-reveal] {
-        opacity: 0;
-        transform: translateY(18px);
-        transition:
-          opacity 600ms ease,
-          transform 600ms ease;
-      }
-
-      body.is-loaded [data-reveal] {
         opacity: 1;
         transform: translateY(0);
       }
 
-      body.is-loaded [data-reveal="2"] {
-        transition-delay: 90ms;
-      }
-
-      body.is-loaded [data-reveal="3"] {
-        transition-delay: 180ms;
-      }
-
-      body.is-loaded [data-reveal="4"] {
-        transition-delay: 270ms;
-      }
-
-      @media (max-width: 980px) {
-        .hero-grid,
-        .kpi-grid,
-        .category-grid,
-        .conversation-grid {
+      @media (max-width: 1024px) {
+        .hero,
+        .paper-grid,
+        .stat-band {
           grid-template-columns: 1fr;
         }
 
-        .spotlight-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+        .stat-cell + .stat-cell {
+          border-left: 0;
+          padding-left: 0;
+          border-top: 1px solid rgba(22, 19, 18, 0.12);
+        }
+
+        .category-row {
+          grid-template-columns: 1fr 1fr;
         }
       }
 
-      @media (max-width: 720px) {
-        .shell {
-          padding: 0.9rem;
+      @media (max-width: 760px) {
+        .page {
+          padding: 0.85rem;
+        }
+
+        .masthead,
+        .section-head,
+        .archive-grid,
+        .conversation-grid {
+          grid-template-columns: 1fr;
+          flex-direction: column;
+          align-items: start;
         }
 
         .hero,
-        .section {
-          padding: 1.1rem;
-          border-radius: 1.5rem;
+        .paper,
+        .dark-section {
+          border-radius: 1.45rem;
         }
 
-        .section-head,
-        .masthead {
-          align-items: start;
-          flex-direction: column;
+        .hero {
+          min-height: auto;
+          padding: 1rem;
         }
 
-        .spotlight-grid {
+        .hero-title {
+          max-width: 100%;
+          font-size: clamp(2.9rem, 14vw, 4.1rem);
+        }
+
+        .hero-stats,
+        .category-row {
           grid-template-columns: 1fr;
+        }
+
+        .hero-body {
+          max-width: 100%;
+        }
+
+        .conversation-score,
+        .archive-score {
+          text-align: left;
         }
       }
     </style>
   </head>
   <body>
-    <div class="shell">
+    <div class="page">
       <header class="masthead" data-reveal="1">
-        <div class="brand-lockup">
+        <div class="brand">
           <div class="brand-mark">E</div>
           <div class="brand-copy">
-            <div class="eyebrow">Public Benchmark Archive</div>
+            <div class="eyebrow">Public archive</div>
             <div class="brand-title">Elephant Benchmarks</div>
           </div>
         </div>
@@ -540,88 +660,93 @@
       </header>
 
       <section class="hero" data-reveal="2">
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <div class="eyebrow">Runway For Memory Systems</div>
+        <div class="hero-copy">
+          <div class="hero-main">
+            <div class="eyebrow">Long-context memory evaluation</div>
             <h1 class="hero-title">
-              Precision,
-              <span class="accent">pressure-tested</span>.
+              Benchmarks
+              <span>for memory systems</span>
             </h1>
             <div class="hero-body" id="hero-copy">
               Loading benchmark archive...
             </div>
-            <div class="hero-actions" id="hero-actions"></div>
+          </div>
+          <div class="hero-actions" id="hero-actions"></div>
+        </div>
+
+        <aside class="hero-side">
+          <div class="hero-panel">
+            <div class="micro">Latest drop</div>
+            <div class="score-value" id="hero-score">--</div>
+            <div class="hero-meta" id="hero-meta"></div>
+            <div class="hero-stats" id="hero-stats"></div>
+          </div>
+          <div class="note-panel" id="hero-note">
+            <div class="micro">Signal</div>
+            <strong>Loading latest run context...</strong>
+            <p>Waiting for the latest published LoCoMo summary.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="paper" data-reveal="3">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" style="color: var(--paper-muted)">Overview</div>
+            <h2 class="section-title">Current <span>state</span></h2>
+          </div>
+          <div class="section-copy">
+            Public benchmark drops, published as directly inspectable artifacts
+            instead of screenshots or cherry-picked tables.
+          </div>
+        </div>
+
+        <div class="stat-band" id="stat-band"></div>
+
+        <div class="paper-grid">
+          <div class="paper-panel">
+            <div class="eyebrow" style="color: var(--paper-muted)">Categories</div>
+            <h3 style="margin: 0.35rem 0 0; font-size: 1.5rem">Latest category performance</h3>
+            <div class="category-list" id="category-list"></div>
           </div>
 
-          <aside class="hero-side">
-            <div class="spotlight">
-              <div class="micro-label">Latest Run</div>
-              <div class="spotlight-score">
-                <div class="score-value" id="hero-score">--</div>
-                <div class="score-unit">Accuracy</div>
-              </div>
-              <div class="score-subtitle" id="hero-subtitle"></div>
-              <div class="spotlight-grid" id="hero-grid"></div>
-            </div>
+          <aside class="signal-card" id="signal-card">
+            <div class="micro" style="color: var(--paper-muted)">Editorial note</div>
+            <div class="signal-value">--</div>
+            <div class="signal-note">Waiting for category summary...</div>
+            <div class="signal-copy">Loading latest benchmark slice comparisons.</div>
           </aside>
         </div>
       </section>
 
-      <section class="section" data-reveal="3">
+      <section class="dark-section" data-reveal="4">
         <div class="section-head">
           <div>
-            <div class="eyebrow">Overview</div>
-            <h2 class="section-title">Benchmark pulse.</h2>
+            <div class="eyebrow">Ranking</div>
+            <h2 class="section-title">Conversation <span>runway</span></h2>
           </div>
           <div class="section-copy">
-            A compact snapshot of the current archive, tuned to make the
-            headline metrics legible before you drill into raw artifacts.
+            The latest run, ordered from strongest conversation to weakest.
           </div>
         </div>
-        <div class="kpi-grid" id="kpi-grid"></div>
+
+        <div class="conversation-list" id="conversation-list"></div>
       </section>
 
-      <section class="section" data-reveal="4">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Category Breakdown</div>
-            <h2 class="section-title">Where the model holds.</h2>
-          </div>
-          <div class="section-copy">
-            Accuracy by slice, pulled directly from the latest published
-            LoCoMo summary.
-          </div>
-        </div>
-        <div class="category-grid" id="category-grid"></div>
-      </section>
-
-      <section class="section" data-reveal="4">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Conversation Ranking</div>
-            <h2 class="section-title">Session by session.</h2>
-          </div>
-          <div class="section-copy">
-            Per-conversation performance, sorted from strongest to weakest, to
-            make variance easy to spot at a glance.
-          </div>
-        </div>
-        <div class="conversation-grid" id="conversation-grid"></div>
-      </section>
-
-      <section class="section" data-reveal="4">
+      <section class="dark-section" data-reveal="4">
         <div class="section-head">
           <div>
             <div class="eyebrow">Archive</div>
-            <h2 class="section-title">Published runs.</h2>
+            <h2 class="section-title">Published <span>drops</span></h2>
           </div>
           <div class="section-copy">
-            Immutable benchmark drops with direct links to public summary and
-            question-level artifacts.
+            Immutable run directories with direct links to the summary and question
+            payloads.
           </div>
         </div>
-        <div class="run-grid" id="run-grid"></div>
-        <div class="state-panel" id="state">Loading benchmark index...</div>
+
+        <div class="archive-list" id="archive-list"></div>
+        <div class="state" id="state">Loading benchmark index...</div>
       </section>
     </div>
 
@@ -631,12 +756,14 @@
       const heroCopy = document.getElementById("hero-copy");
       const heroActions = document.getElementById("hero-actions");
       const heroScore = document.getElementById("hero-score");
-      const heroSubtitle = document.getElementById("hero-subtitle");
-      const heroGrid = document.getElementById("hero-grid");
-      const kpiGrid = document.getElementById("kpi-grid");
-      const categoryGrid = document.getElementById("category-grid");
-      const conversationGrid = document.getElementById("conversation-grid");
-      const runGrid = document.getElementById("run-grid");
+      const heroMeta = document.getElementById("hero-meta");
+      const heroStats = document.getElementById("hero-stats");
+      const heroNote = document.getElementById("hero-note");
+      const statBand = document.getElementById("stat-band");
+      const categoryList = document.getElementById("category-list");
+      const signalCard = document.getElementById("signal-card");
+      const conversationList = document.getElementById("conversation-list");
+      const archiveList = document.getElementById("archive-list");
       const state = document.getElementById("state");
 
       requestAnimationFrame(() => {
@@ -661,30 +788,27 @@
         });
       }
 
-      function fmtCompact(value) {
-        return new Intl.NumberFormat(undefined, {
-          notation: "compact",
-          maximumFractionDigits: 1,
-        }).format(value);
+      function fmtHours(seconds) {
+        return `${(seconds / 3600).toFixed(1)}h`;
       }
 
-      function byAccuracyDesc(a, b) {
+      function pill(label, value) {
+        const node = document.createElement("div");
+        node.className = "pill";
+        node.innerHTML = `<span class="micro">${label}</span><strong>${value}</strong>`;
+        return node;
+      }
+
+      function button(label, href, className = "button") {
+        const node = document.createElement("a");
+        node.className = className;
+        node.href = href;
+        node.textContent = label;
+        return node;
+      }
+
+      function accuracySort(a, b) {
         return b[1].accuracy - a[1].accuracy;
-      }
-
-      function renderPill(label, value) {
-        const pill = document.createElement("div");
-        pill.className = "pill";
-        pill.innerHTML = `<span class="micro-label">${label}</span><strong>${value}</strong>`;
-        return pill;
-      }
-
-      function renderButton(label, href, className = "button button-secondary") {
-        const link = document.createElement("a");
-        link.className = className;
-        link.href = href;
-        link.textContent = label;
-        return link;
       }
 
       fetch("locomo/index.json")
@@ -697,10 +821,10 @@
         .then(async (index) => {
           const runs = index.runs || [];
 
-          headerPills.appendChild(renderPill("Benchmark", index.benchmark || "locomo"));
-          headerPills.appendChild(renderPill("Runs", String(runs.length)));
+          headerPills.appendChild(pill("Benchmark", (index.benchmark || "locomo").toUpperCase()));
+          headerPills.appendChild(pill("Runs", String(runs.length)));
           if (index.generated_at) {
-            headerPills.appendChild(renderPill("Refreshed", fmtDate(index.generated_at)));
+            headerPills.appendChild(pill("Updated", fmtDate(index.generated_at)));
           }
 
           if (runs.length === 0) {
@@ -710,30 +834,31 @@
           }
 
           const latestRun = runs[0];
-          const latestSummaryResponse = await fetch(dataHref(latestRun.summary_path));
-          if (!latestSummaryResponse.ok) {
-            throw new Error(`Latest summary HTTP ${latestSummaryResponse.status}`);
+          const summaryResponse = await fetch(dataHref(latestRun.summary_path));
+          if (!summaryResponse.ok) {
+            throw new Error(`Summary HTTP ${summaryResponse.status}`);
           }
-          const latestSummary = await latestSummaryResponse.json();
+          const latestSummary = await summaryResponse.json();
+          const categories = Object.entries(latestSummary.per_category || {}).sort(accuracySort);
+          const conversations = Object.entries(latestSummary.per_conversation || {}).sort(accuracySort);
+          const bestCategory = categories[0];
+          const weakestCategory = categories[categories.length - 1];
 
           heroCopy.innerHTML = `
-            Elephant’s public benchmark archive tracks high-signal long-context
-            evaluation runs with direct access to the exact summary and
-            question-level artifacts. The current headline run is
-            <strong>${latestRun.run_id}</strong> on ${index.benchmark.toUpperCase()},
-            scored over <strong>${latestRun.total_questions.toLocaleString()}</strong>
-            questions.
+            Elephant publishes benchmark drops as inspectable artifacts. The latest
+            LoCoMo release, <strong>${latestRun.run_id}</strong>, covers
+            <strong>${latestRun.total_questions.toLocaleString()}</strong> scored
+            questions with the public summary and raw question-level payload attached
+            to the run.
           `;
 
           heroActions.appendChild(
-            renderButton("Read latest summary", dataHref(latestRun.summary_path), "button button-primary"),
+            button("Open latest summary", dataHref(latestRun.summary_path), "button button-primary"),
           );
-          heroActions.appendChild(
-            renderButton("Download questions", dataHref(latestRun.questions_path)),
-          );
+          heroActions.appendChild(button("Download questions", dataHref(latestRun.questions_path), "button"));
 
-          heroScore.textContent = fmtPct(latestRun.accuracy, 2);
-          heroSubtitle.innerHTML = `
+          heroScore.textContent = fmtPct(latestRun.accuracy);
+          heroMeta.innerHTML = `
             <span>${latestRun.run_id}</span>
             <span>${latestRun.tag || "untagged"}</span>
             <span>${fmtDate(latestRun.published_at)}</span>
@@ -742,97 +867,129 @@
           [
             ["Questions", latestRun.total_questions.toLocaleString()],
             ["Mean F1", latestRun.mean_f1.toFixed(3)],
-            ["Evidence Recall", fmtPct(latestRun.mean_evidence_recall, 2)],
+            ["Evidence", fmtPct(latestRun.mean_evidence_recall)],
             ["Commit", latestRun.commit || "n/a"],
           ].forEach(([label, value]) => {
-            const cell = document.createElement("div");
-            cell.className = "spotlight-cell";
-            cell.innerHTML = `<div class="micro-label">${label}</div><strong>${value}</strong>`;
-            heroGrid.appendChild(cell);
+            const stat = document.createElement("div");
+            stat.className = "hero-stat";
+            stat.innerHTML = `<div class="micro">${label}</div><strong>${value}</strong>`;
+            heroStats.appendChild(stat);
           });
+
+          if (bestCategory && weakestCategory) {
+            heroNote.innerHTML = `
+              <div class="micro">Signal</div>
+              <strong>${bestCategory[0]} leads at ${fmtPct(bestCategory[1].accuracy)}, while ${weakestCategory[0]} trails at ${fmtPct(weakestCategory[1].accuracy)}.</strong>
+              <p>
+                The latest run is strongest on open retrieval and weaker on temporal
+                reasoning, which gives the page a real story instead of a flat average.
+              </p>
+            `;
+          }
 
           [
-            ["Published Runs", runs.length.toString()],
-            ["Latest Questions", latestRun.total_questions.toLocaleString()],
-            ["Latest Accuracy", fmtPct(latestRun.accuracy)],
-            ["Updated", fmtDate(index.generated_at || latestRun.published_at)],
+            ["Published runs", runs.length],
+            ["Latest accuracy", fmtPct(latestRun.accuracy)],
+            ["Latest questions", latestRun.total_questions.toLocaleString()],
+            ["Last update", fmtDate(index.generated_at || latestRun.published_at)],
           ].forEach(([label, value]) => {
-            const card = document.createElement("article");
-            card.className = "kpi-card";
-            card.innerHTML = `
-              <div class="micro-label">${label}</div>
-              <div class="kpi-value">${value}</div>
-            `;
-            kpiGrid.appendChild(card);
+            const cell = document.createElement("div");
+            cell.className = "stat-cell";
+            cell.innerHTML = `<div class="micro">${label}</div><div class="stat-value">${value}</div>`;
+            statBand.appendChild(cell);
           });
 
-          Object.entries(latestSummary.per_category || {})
-            .sort(byAccuracyDesc)
-            .forEach(([name, stats]) => {
-              const card = document.createElement("article");
-              card.className = "category-card";
-              card.innerHTML = `
-                <div class="micro-label">Category</div>
+          categories.forEach(([name, stats]) => {
+            const row = document.createElement("article");
+            row.className = "category-row";
+            row.innerHTML = `
+              <div>
+                <div class="micro">Category</div>
                 <div class="category-name">${name}</div>
-                <div class="category-value">${fmtPct(stats.accuracy)}</div>
-                <div class="conversation-meta">
-                  <span>${stats.count.toLocaleString()} questions</span>
-                  <span>F1 ${stats.mean_f1.toFixed(3)}</span>
-                </div>
-              `;
-              categoryGrid.appendChild(card);
-            });
+              </div>
+              <div>
+                <div class="micro">Accuracy</div>
+                <div class="category-score">${fmtPct(stats.accuracy)}</div>
+              </div>
+              <div>
+                <div class="micro">Questions</div>
+                <div>${stats.count.toLocaleString()}</div>
+              </div>
+              <div>
+                <div class="micro">Mean F1</div>
+                <div>${stats.mean_f1.toFixed(3)}</div>
+              </div>
+              <div>
+                <div class="micro">Evidence</div>
+                <div>${fmtPct(stats.mean_evidence_recall)}</div>
+              </div>
+            `;
+            categoryList.appendChild(row);
+          });
 
-          Object.entries(latestSummary.per_conversation || {})
-            .sort(byAccuracyDesc)
-            .forEach(([name, stats]) => {
-              const card = document.createElement("article");
-              card.className = "conversation-card";
-              card.innerHTML = `
+          if (bestCategory && weakestCategory) {
+            signalCard.innerHTML = `
+              <div class="micro" style="color: var(--paper-muted)">Editorial note</div>
+              <div class="signal-value">${fmtPct(bestCategory[1].accuracy)}</div>
+              <div class="signal-note">
+                ${bestCategory[0]} is the best-performing slice in the current public run.
+              </div>
+              <div class="signal-copy">
+                ${weakestCategory[0]} is the sharpest drop-off at
+                ${fmtPct(weakestCategory[1].accuracy)}. That contrast is useful because
+                it makes the benchmark archive immediately legible to a reader.
+              </div>
+            `;
+          }
+
+          conversations.forEach(([name, stats], indexValue) => {
+            const row = document.createElement("article");
+            row.className = "conversation-row";
+            const totalTime = stats.total_time_s ? fmtHours(stats.total_time_s) : "n/a";
+            row.innerHTML = `
+              <div class="conversation-grid">
+                <div class="conversation-rank">${String(indexValue + 1).padStart(2, "0")}</div>
                 <div>
-                  <div class="micro-label">Conversation</div>
                   <div class="conversation-name">${name}</div>
+                  <div class="conversation-meta">
+                    ${stats.count.toLocaleString()} questions · F1 ${stats.mean_f1.toFixed(3)} ·
+                    Evidence ${fmtPct(stats.mean_evidence_recall)} · Runtime ${totalTime}
+                  </div>
                 </div>
-                <div class="conversation-value">${fmtPct(stats.accuracy)}</div>
-                <div class="progress-track">
-                  <div class="progress-bar" style="width: ${Math.max(stats.accuracy * 100, 4)}%"></div>
-                </div>
-                <div class="conversation-meta">
-                  <span>${stats.count.toLocaleString()} questions</span>
-                  <span>F1 ${stats.mean_f1.toFixed(3)}</span>
-                  <span>Evidence ${fmtPct(stats.mean_evidence_recall)}</span>
-                </div>
-              `;
-              conversationGrid.appendChild(card);
-            });
+                <div class="conversation-score">${fmtPct(stats.accuracy)}</div>
+              </div>
+              <div class="progress-track">
+                <div class="progress-bar" style="width: ${Math.max(stats.accuracy * 100, 4)}%"></div>
+              </div>
+            `;
+            conversationList.appendChild(row);
+          });
 
           runs.forEach((run) => {
-            const card = document.createElement("article");
-            card.className = "run-card";
-            const artifacts = [
-              `<a class="artifact-link" href="${dataHref(run.summary_path)}">Summary</a>`,
-              `<a class="artifact-link" href="${dataHref(run.questions_path)}">Questions</a>`,
+            const row = document.createElement("article");
+            row.className = "archive-row";
+            const links = [
+              `<a class="archive-link" href="${dataHref(run.summary_path)}">Summary</a>`,
+              `<a class="archive-link alt" href="${dataHref(run.questions_path)}">Questions</a>`,
             ];
             if (run.debug_path) {
-              artifacts.push(
-                `<a class="artifact-link" href="${dataHref(run.debug_path)}">Debug</a>`,
-              );
+              links.push(`<a class="archive-link" href="${dataHref(run.debug_path)}">Debug</a>`);
             }
 
-            card.innerHTML = `
-              <div>
-                <div class="micro-label">Run</div>
-                <div class="run-name">${run.run_id}</div>
+            row.innerHTML = `
+              <div class="archive-grid">
+                <div>
+                  <div class="micro">Run</div>
+                  <div class="run-name">${run.run_id}</div>
+                  <div class="archive-meta">
+                    ${run.total_questions.toLocaleString()} questions · ${fmtDate(run.published_at)} · ${run.tag || "untagged"}
+                  </div>
+                </div>
+                <div class="archive-score">${fmtPct(run.accuracy)}</div>
               </div>
-              <div class="kpi-value">${fmtPct(run.accuracy)}</div>
-              <div class="run-meta">
-                <span>${run.total_questions.toLocaleString()} questions</span>
-                <span>${fmtDate(run.published_at)}</span>
-                <span>${run.tag || "untagged"}</span>
-              </div>
-              <div class="artifact-links">${artifacts.join("")}</div>
+              <div class="archive-links">${links.join("")}</div>
             `;
-            runGrid.appendChild(card);
+            archiveList.appendChild(row);
           });
 
           state.textContent = `${runs.length} published run${runs.length === 1 ? "" : "s"} loaded.`;
