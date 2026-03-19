@@ -5,206 +5,686 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Elephant Benchmarks</title>
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap");
+
       :root {
-        --bg: #f4f1e8;
-        --surface: #fffaf0;
-        --ink: #1f2a1f;
-        --muted: #576457;
-        --line: #d8cfba;
-        --accent: #235347;
-        --accent-soft: #d8ebe2;
+        --paper: #f5efe3;
+        --paper-strong: #fcf7ee;
+        --ink: #171913;
+        --muted: #5f6457;
+        --line: rgba(23, 25, 19, 0.1);
+        --panel: rgba(255, 251, 244, 0.74);
+        --panel-strong: rgba(255, 251, 244, 0.92);
+        --forest: #24493f;
+        --forest-deep: #183028;
+        --sage: #d9e6d8;
+        --bronze: #b46d3d;
+        --bronze-soft: rgba(180, 109, 61, 0.12);
+        --shadow: 0 28px 80px rgba(27, 32, 25, 0.12);
+        --radius-xl: 2rem;
+        --radius-lg: 1.4rem;
+        --radius-md: 1rem;
+        --content: 78rem;
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
-        font-family: Georgia, "Times New Roman", serif;
         color: var(--ink);
+        font-family: "Manrope", sans-serif;
         background:
-          radial-gradient(circle at top left, #f8e8c8 0, transparent 28rem),
-          linear-gradient(180deg, #f4f1e8 0%, #efe7d3 100%);
+          radial-gradient(circle at top left, rgba(180, 109, 61, 0.22), transparent 24rem),
+          radial-gradient(circle at right 12rem top 8rem, rgba(36, 73, 63, 0.16), transparent 20rem),
+          linear-gradient(180deg, #f4ede0 0%, #efe6d4 52%, #f7f2e7 100%);
       }
 
-      main {
-        max-width: 64rem;
-        margin: 0 auto;
-        padding: 3rem 1.25rem 4rem;
-      }
-
-      header {
-        margin-bottom: 2rem;
-      }
-
-      h1 {
-        font-size: clamp(2.2rem, 4vw, 4rem);
-        line-height: 1;
-        margin: 0 0 0.75rem;
-        letter-spacing: -0.03em;
-      }
-
-      p {
-        margin: 0;
-        color: var(--muted);
-        max-width: 42rem;
-        line-height: 1.6;
-      }
-
-      .panel {
-        background: rgba(255, 250, 240, 0.9);
-        border: 1px solid var(--line);
-        border-radius: 1.25rem;
-        padding: 1.25rem;
-        box-shadow: 0 20px 50px rgba(36, 38, 24, 0.08);
-        backdrop-filter: blur(8px);
-      }
-
-      .meta {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-        gap: 0.75rem;
-        margin-bottom: 1rem;
-      }
-
-      .meta-card {
-        padding: 0.9rem 1rem;
-        border-radius: 1rem;
-        background: var(--accent-soft);
-      }
-
-      .meta-label {
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--muted);
-      }
-
-      .meta-value {
-        margin-top: 0.35rem;
-        font-size: 1.5rem;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 1rem;
-      }
-
-      th,
-      td {
-        text-align: left;
-        padding: 0.9rem 0.7rem;
-        border-top: 1px solid var(--line);
-        vertical-align: top;
-      }
-
-      th {
-        color: var(--muted);
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(23, 25, 19, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(23, 25, 19, 0.035) 1px, transparent 1px);
+        background-size: 3.25rem 3.25rem;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 90%);
+        pointer-events: none;
       }
 
       a {
-        color: var(--accent);
+        color: inherit;
+        text-decoration: none;
       }
 
-      .empty,
-      .error {
-        margin-top: 1rem;
+      button,
+      input,
+      textarea,
+      select {
+        font: inherit;
+      }
+
+      .shell {
+        position: relative;
+        max-width: var(--content);
+        margin: 0 auto;
+        padding: 1.25rem;
+      }
+
+      .masthead {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.75rem 0 1.5rem;
+      }
+
+      .brand-lockup {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+      }
+
+      .brand-mark {
+        width: 2.9rem;
+        height: 2.9rem;
+        display: grid;
+        place-items: center;
+        border-radius: 0.85rem;
+        background:
+          linear-gradient(150deg, rgba(36, 73, 63, 0.95), rgba(24, 48, 40, 0.92));
+        color: var(--paper-strong);
+        box-shadow: 0 16px 36px rgba(24, 48, 40, 0.24);
+        font-size: 1.2rem;
+      }
+
+      .brand-copy {
+        display: grid;
+        gap: 0.15rem;
+      }
+
+      .eyebrow,
+      .micro-label {
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
         color: var(--muted);
       }
 
+      .brand-title {
+        font-size: 0.95rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(23, 25, 19, 0.08);
+        border-radius: 2.3rem;
+        padding: clamp(1.5rem, 3vw, 2.4rem);
+        background:
+          linear-gradient(140deg, rgba(255, 251, 244, 0.92), rgba(249, 240, 224, 0.72)),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.6), transparent);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        pointer-events: none;
+      }
+
+      .hero::before {
+        width: 26rem;
+        height: 26rem;
+        right: -9rem;
+        top: -11rem;
+        background: radial-gradient(circle, rgba(36, 73, 63, 0.14), transparent 66%);
+      }
+
+      .hero::after {
+        width: 18rem;
+        height: 18rem;
+        left: -7rem;
+        bottom: -9rem;
+        background: radial-gradient(circle, rgba(180, 109, 61, 0.12), transparent 66%);
+      }
+
+      .hero-grid {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.9fr);
+        gap: 1.2rem;
+      }
+
+      .hero-copy {
+        display: grid;
+        gap: 1.15rem;
+      }
+
+      .hero-title {
+        margin: 0;
+        max-width: 12ch;
+        font-family: "Instrument Serif", serif;
+        font-size: clamp(3.4rem, 8vw, 7.2rem);
+        line-height: 0.92;
+        font-weight: 400;
+        letter-spacing: -0.05em;
+      }
+
+      .hero-title .accent {
+        font-style: italic;
+        color: var(--forest);
+      }
+
+      .hero-body {
+        max-width: 38rem;
+        font-size: 1.02rem;
+        line-height: 1.75;
+        color: var(--muted);
+      }
+
+      .hero-actions,
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .button,
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        border-radius: 999px;
+        padding: 0.82rem 1.15rem;
+        border: 1px solid rgba(23, 25, 19, 0.08);
+        transition:
+          transform 220ms ease,
+          border-color 220ms ease,
+          background-color 220ms ease;
+      }
+
+      .button:hover,
+      .pill:hover,
+      .run-card:hover,
+      .conversation-card:hover,
+      .category-card:hover,
+      .spotlight:hover {
+        transform: translateY(-2px);
+      }
+
+      .button-primary {
+        color: var(--paper-strong);
+        background: linear-gradient(140deg, var(--forest), var(--forest-deep));
+        box-shadow: 0 18px 32px rgba(24, 48, 40, 0.2);
+      }
+
+      .button-secondary,
+      .pill {
+        background: rgba(255, 251, 244, 0.84);
+      }
+
+      .hero-side {
+        display: grid;
+        gap: 0.95rem;
+        align-content: start;
+      }
+
+      .spotlight {
+        display: grid;
+        gap: 0.9rem;
+        padding: 1.2rem;
+        border-radius: 1.7rem;
+        color: var(--paper-strong);
+        background:
+          linear-gradient(150deg, rgba(23, 48, 40, 0.95), rgba(36, 73, 63, 0.94)),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent);
+        box-shadow: 0 22px 48px rgba(24, 48, 40, 0.24);
+      }
+
+      .spotlight .micro-label,
+      .spotlight .muted-copy {
+        color: rgba(255, 250, 240, 0.72);
+      }
+
+      .spotlight-score {
+        display: flex;
+        align-items: end;
+        gap: 0.6rem;
+      }
+
+      .score-value {
+        font-size: clamp(3rem, 8vw, 5rem);
+        line-height: 0.88;
+        letter-spacing: -0.06em;
+        font-weight: 800;
+      }
+
+      .score-unit {
+        padding-bottom: 0.5rem;
+        font-size: 1rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .score-subtitle {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem 1rem;
+        color: rgba(255, 250, 240, 0.9);
+      }
+
+      .spotlight-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+      }
+
+      .spotlight-cell {
+        padding: 0.8rem 0.9rem;
+        border-radius: 1rem;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .spotlight-cell strong {
+        display: block;
+        margin-top: 0.3rem;
+        font-size: 1.12rem;
+      }
+
+      .section {
+        margin-top: 1.25rem;
+        padding: 1.35rem;
+        border-radius: var(--radius-xl);
+        border: 1px solid rgba(23, 25, 19, 0.08);
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(12px);
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 1rem;
+        margin-bottom: 1.1rem;
+      }
+
+      .section-title {
+        margin: 0;
+        font-family: "Instrument Serif", serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 0.96;
+        font-weight: 400;
+        letter-spacing: -0.04em;
+      }
+
+      .section-copy {
+        max-width: 34rem;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .kpi-grid,
+      .category-grid,
+      .conversation-grid,
+      .run-grid {
+        display: grid;
+        gap: 0.95rem;
+      }
+
+      .kpi-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .conversation-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .run-grid {
+        grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      }
+
+      .kpi-card,
+      .category-card,
+      .conversation-card,
+      .run-card {
+        position: relative;
+        overflow: hidden;
+        padding: 1rem;
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(23, 25, 19, 0.08);
+        background: var(--panel-strong);
+        transition:
+          transform 220ms ease,
+          border-color 220ms ease,
+          box-shadow 220ms ease;
+      }
+
+      .kpi-card::before,
+      .category-card::before,
+      .conversation-card::before,
+      .run-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 100%;
+        height: 0.28rem;
+        background: linear-gradient(90deg, var(--forest), var(--bronze));
+        opacity: 0.9;
+      }
+
+      .kpi-value,
+      .category-value,
+      .conversation-value {
+        margin-top: 0.45rem;
+        font-size: clamp(1.6rem, 3vw, 2.5rem);
+        line-height: 1;
+        letter-spacing: -0.05em;
+        font-weight: 800;
+      }
+
+      .category-name,
+      .conversation-name,
+      .run-name {
+        font-size: 1.05rem;
+        font-weight: 700;
+      }
+
+      .conversation-card {
+        display: grid;
+        gap: 0.95rem;
+      }
+
+      .progress-track {
+        height: 0.5rem;
+        border-radius: 999px;
+        background: rgba(36, 73, 63, 0.1);
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--bronze), var(--forest));
+      }
+
+      .conversation-meta,
+      .run-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem 0.8rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .run-card {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .artifact-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+      }
+
+      .artifact-link {
+        border-radius: 999px;
+        padding: 0.55rem 0.85rem;
+        background: var(--bronze-soft);
+        color: var(--forest-deep);
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      .artifact-link:hover,
+      .button:hover,
+      .pill:hover {
+        border-color: rgba(23, 25, 19, 0.16);
+      }
+
+      .state-panel {
+        padding: 1rem 0 0;
+        color: var(--muted);
+      }
+
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 600ms ease,
+          transform 600ms ease;
+      }
+
+      body.is-loaded [data-reveal] {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      body.is-loaded [data-reveal="2"] {
+        transition-delay: 90ms;
+      }
+
+      body.is-loaded [data-reveal="3"] {
+        transition-delay: 180ms;
+      }
+
+      body.is-loaded [data-reveal="4"] {
+        transition-delay: 270ms;
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid,
+        .kpi-grid,
+        .category-grid,
+        .conversation-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .spotlight-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
       @media (max-width: 720px) {
-        table,
-        thead,
-        tbody,
-        th,
-        td,
-        tr {
-          display: block;
+        .shell {
+          padding: 0.9rem;
         }
 
-        thead {
-          display: none;
+        .hero,
+        .section {
+          padding: 1.1rem;
+          border-radius: 1.5rem;
         }
 
-        tr {
-          padding: 0.75rem 0;
-          border-top: 1px solid var(--line);
+        .section-head,
+        .masthead {
+          align-items: start;
+          flex-direction: column;
         }
 
-        td {
-          border: 0;
-          padding: 0.3rem 0;
-        }
-
-        td::before {
-          content: attr(data-label);
-          display: block;
-          color: var(--muted);
-          font-size: 0.8rem;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          margin-bottom: 0.15rem;
+        .spotlight-grid {
+          grid-template-columns: 1fr;
         }
       }
     </style>
   </head>
   <body>
-    <main>
-      <header>
-        <h1>Elephant Benchmarks</h1>
-        <p>
-          Public benchmark history for Elephant. This page reads
-          <code>locomo/index.json</code> and links to per-run artifacts.
-        </p>
+    <div class="shell">
+      <header class="masthead" data-reveal="1">
+        <div class="brand-lockup">
+          <div class="brand-mark">E</div>
+          <div class="brand-copy">
+            <div class="eyebrow">Public Benchmark Archive</div>
+            <div class="brand-title">Elephant Benchmarks</div>
+          </div>
+        </div>
+        <div class="pill-row" id="header-pills"></div>
       </header>
 
-      <section class="panel">
-        <div id="meta" class="meta"></div>
-        <div id="state" class="empty">Loading benchmark index...</div>
-        <table id="runs" hidden>
-          <thead>
-            <tr>
-              <th>Run</th>
-              <th>Published</th>
-              <th>Questions</th>
-              <th>Accuracy</th>
-              <th>Artifacts</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+      <section class="hero" data-reveal="2">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">Runway For Memory Systems</div>
+            <h1 class="hero-title">
+              Precision,
+              <span class="accent">pressure-tested</span>.
+            </h1>
+            <div class="hero-body" id="hero-copy">
+              Loading benchmark archive...
+            </div>
+            <div class="hero-actions" id="hero-actions"></div>
+          </div>
+
+          <aside class="hero-side">
+            <div class="spotlight">
+              <div class="micro-label">Latest Run</div>
+              <div class="spotlight-score">
+                <div class="score-value" id="hero-score">--</div>
+                <div class="score-unit">Accuracy</div>
+              </div>
+              <div class="score-subtitle" id="hero-subtitle"></div>
+              <div class="spotlight-grid" id="hero-grid"></div>
+            </div>
+          </aside>
+        </div>
       </section>
-    </main>
+
+      <section class="section" data-reveal="3">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Overview</div>
+            <h2 class="section-title">Benchmark pulse.</h2>
+          </div>
+          <div class="section-copy">
+            A compact snapshot of the current archive, tuned to make the
+            headline metrics legible before you drill into raw artifacts.
+          </div>
+        </div>
+        <div class="kpi-grid" id="kpi-grid"></div>
+      </section>
+
+      <section class="section" data-reveal="4">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Category Breakdown</div>
+            <h2 class="section-title">Where the model holds.</h2>
+          </div>
+          <div class="section-copy">
+            Accuracy by slice, pulled directly from the latest published
+            LoCoMo summary.
+          </div>
+        </div>
+        <div class="category-grid" id="category-grid"></div>
+      </section>
+
+      <section class="section" data-reveal="4">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Conversation Ranking</div>
+            <h2 class="section-title">Session by session.</h2>
+          </div>
+          <div class="section-copy">
+            Per-conversation performance, sorted from strongest to weakest, to
+            make variance easy to spot at a glance.
+          </div>
+        </div>
+        <div class="conversation-grid" id="conversation-grid"></div>
+      </section>
+
+      <section class="section" data-reveal="4">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Archive</div>
+            <h2 class="section-title">Published runs.</h2>
+          </div>
+          <div class="section-copy">
+            Immutable benchmark drops with direct links to public summary and
+            question-level artifacts.
+          </div>
+        </div>
+        <div class="run-grid" id="run-grid"></div>
+        <div class="state-panel" id="state">Loading benchmark index...</div>
+      </section>
+    </div>
 
     <script>
-      const meta = document.getElementById("meta");
-      const state = document.getElementById("state");
-      const table = document.getElementById("runs");
-      const tbody = table.querySelector("tbody");
       const dataRoot = "locomo/";
+      const headerPills = document.getElementById("header-pills");
+      const heroCopy = document.getElementById("hero-copy");
+      const heroActions = document.getElementById("hero-actions");
+      const heroScore = document.getElementById("hero-score");
+      const heroSubtitle = document.getElementById("hero-subtitle");
+      const heroGrid = document.getElementById("hero-grid");
+      const kpiGrid = document.getElementById("kpi-grid");
+      const categoryGrid = document.getElementById("category-grid");
+      const conversationGrid = document.getElementById("conversation-grid");
+      const runGrid = document.getElementById("run-grid");
+      const state = document.getElementById("state");
 
-      function metaCard(label, value) {
-        const div = document.createElement("div");
-        div.className = "meta-card";
-        div.innerHTML = `<div class="meta-label">${label}</div><div class="meta-value">${value}</div>`;
-        return div;
-      }
-
-      function fmtPct(value) {
-        return `${(value * 100).toFixed(2)}%`;
-      }
+      requestAnimationFrame(() => {
+        document.body.classList.add("is-loaded");
+      });
 
       function dataHref(href) {
         return `${dataRoot}${href}`;
       }
 
-      function link(label, href) {
-        return `<a href="${dataHref(href)}">${label}</a>`;
+      function fmtPct(value, digits = 2) {
+        return `${(value * 100).toFixed(digits)}%`;
+      }
+
+      function fmtDate(value) {
+        return new Date(value).toLocaleString(undefined, {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+          hour: "numeric",
+          minute: "2-digit",
+        });
+      }
+
+      function fmtCompact(value) {
+        return new Intl.NumberFormat(undefined, {
+          notation: "compact",
+          maximumFractionDigits: 1,
+        }).format(value);
+      }
+
+      function byAccuracyDesc(a, b) {
+        return b[1].accuracy - a[1].accuracy;
+      }
+
+      function renderPill(label, value) {
+        const pill = document.createElement("div");
+        pill.className = "pill";
+        pill.innerHTML = `<span class="micro-label">${label}</span><strong>${value}</strong>`;
+        return pill;
+      }
+
+      function renderButton(label, href, className = "button button-secondary") {
+        const link = document.createElement("a");
+        link.className = className;
+        link.href = href;
+        link.textContent = label;
+        return link;
       }
 
       fetch("locomo/index.json")
@@ -214,42 +694,152 @@
           }
           return response.json();
         })
-        .then((index) => {
-          meta.appendChild(metaCard("Benchmark", index.benchmark || "locomo"));
-          meta.appendChild(metaCard("Schema", index.schema_version || "unknown"));
-          meta.appendChild(metaCard("Runs", String(index.runs?.length || 0)));
+        .then(async (index) => {
+          const runs = index.runs || [];
 
-          if (!index.runs || index.runs.length === 0) {
+          headerPills.appendChild(renderPill("Benchmark", index.benchmark || "locomo"));
+          headerPills.appendChild(renderPill("Runs", String(runs.length)));
+          if (index.generated_at) {
+            headerPills.appendChild(renderPill("Refreshed", fmtDate(index.generated_at)));
+          }
+
+          if (runs.length === 0) {
+            heroCopy.textContent = "No benchmark runs have been published yet.";
             state.textContent = "No published runs yet.";
             return;
           }
 
-          state.hidden = true;
-          table.hidden = false;
+          const latestRun = runs[0];
+          const latestSummaryResponse = await fetch(dataHref(latestRun.summary_path));
+          if (!latestSummaryResponse.ok) {
+            throw new Error(`Latest summary HTTP ${latestSummaryResponse.status}`);
+          }
+          const latestSummary = await latestSummaryResponse.json();
 
-          for (const run of index.runs) {
-            const tr = document.createElement("tr");
+          heroCopy.innerHTML = `
+            Elephant’s public benchmark archive tracks high-signal long-context
+            evaluation runs with direct access to the exact summary and
+            question-level artifacts. The current headline run is
+            <strong>${latestRun.run_id}</strong> on ${index.benchmark.toUpperCase()},
+            scored over <strong>${latestRun.total_questions.toLocaleString()}</strong>
+            questions.
+          `;
+
+          heroActions.appendChild(
+            renderButton("Read latest summary", dataHref(latestRun.summary_path), "button button-primary"),
+          );
+          heroActions.appendChild(
+            renderButton("Download questions", dataHref(latestRun.questions_path)),
+          );
+
+          heroScore.textContent = fmtPct(latestRun.accuracy, 2);
+          heroSubtitle.innerHTML = `
+            <span>${latestRun.run_id}</span>
+            <span>${latestRun.tag || "untagged"}</span>
+            <span>${fmtDate(latestRun.published_at)}</span>
+          `;
+
+          [
+            ["Questions", latestRun.total_questions.toLocaleString()],
+            ["Mean F1", latestRun.mean_f1.toFixed(3)],
+            ["Evidence Recall", fmtPct(latestRun.mean_evidence_recall, 2)],
+            ["Commit", latestRun.commit || "n/a"],
+          ].forEach(([label, value]) => {
+            const cell = document.createElement("div");
+            cell.className = "spotlight-cell";
+            cell.innerHTML = `<div class="micro-label">${label}</div><strong>${value}</strong>`;
+            heroGrid.appendChild(cell);
+          });
+
+          [
+            ["Published Runs", runs.length.toString()],
+            ["Latest Questions", latestRun.total_questions.toLocaleString()],
+            ["Latest Accuracy", fmtPct(latestRun.accuracy)],
+            ["Updated", fmtDate(index.generated_at || latestRun.published_at)],
+          ].forEach(([label, value]) => {
+            const card = document.createElement("article");
+            card.className = "kpi-card";
+            card.innerHTML = `
+              <div class="micro-label">${label}</div>
+              <div class="kpi-value">${value}</div>
+            `;
+            kpiGrid.appendChild(card);
+          });
+
+          Object.entries(latestSummary.per_category || {})
+            .sort(byAccuracyDesc)
+            .forEach(([name, stats]) => {
+              const card = document.createElement("article");
+              card.className = "category-card";
+              card.innerHTML = `
+                <div class="micro-label">Category</div>
+                <div class="category-name">${name}</div>
+                <div class="category-value">${fmtPct(stats.accuracy)}</div>
+                <div class="conversation-meta">
+                  <span>${stats.count.toLocaleString()} questions</span>
+                  <span>F1 ${stats.mean_f1.toFixed(3)}</span>
+                </div>
+              `;
+              categoryGrid.appendChild(card);
+            });
+
+          Object.entries(latestSummary.per_conversation || {})
+            .sort(byAccuracyDesc)
+            .forEach(([name, stats]) => {
+              const card = document.createElement("article");
+              card.className = "conversation-card";
+              card.innerHTML = `
+                <div>
+                  <div class="micro-label">Conversation</div>
+                  <div class="conversation-name">${name}</div>
+                </div>
+                <div class="conversation-value">${fmtPct(stats.accuracy)}</div>
+                <div class="progress-track">
+                  <div class="progress-bar" style="width: ${Math.max(stats.accuracy * 100, 4)}%"></div>
+                </div>
+                <div class="conversation-meta">
+                  <span>${stats.count.toLocaleString()} questions</span>
+                  <span>F1 ${stats.mean_f1.toFixed(3)}</span>
+                  <span>Evidence ${fmtPct(stats.mean_evidence_recall)}</span>
+                </div>
+              `;
+              conversationGrid.appendChild(card);
+            });
+
+          runs.forEach((run) => {
+            const card = document.createElement("article");
+            card.className = "run-card";
             const artifacts = [
-              link("summary", run.summary_path),
-              link("questions", run.questions_path),
+              `<a class="artifact-link" href="${dataHref(run.summary_path)}">Summary</a>`,
+              `<a class="artifact-link" href="${dataHref(run.questions_path)}">Questions</a>`,
             ];
             if (run.debug_path) {
-              artifacts.push(link("debug", run.debug_path));
+              artifacts.push(
+                `<a class="artifact-link" href="${dataHref(run.debug_path)}">Debug</a>`,
+              );
             }
 
-            tr.innerHTML = `
-              <td data-label="Run"><strong>${run.run_id}</strong><br>${run.tag || ""}</td>
-              <td data-label="Published">${new Date(run.published_at).toLocaleString()}</td>
-              <td data-label="Questions">${run.total_questions}</td>
-              <td data-label="Accuracy">${fmtPct(run.accuracy)}</td>
-              <td data-label="Artifacts">${artifacts.join(" · ")}</td>
+            card.innerHTML = `
+              <div>
+                <div class="micro-label">Run</div>
+                <div class="run-name">${run.run_id}</div>
+              </div>
+              <div class="kpi-value">${fmtPct(run.accuracy)}</div>
+              <div class="run-meta">
+                <span>${run.total_questions.toLocaleString()} questions</span>
+                <span>${fmtDate(run.published_at)}</span>
+                <span>${run.tag || "untagged"}</span>
+              </div>
+              <div class="artifact-links">${artifacts.join("")}</div>
             `;
-            tbody.appendChild(tr);
-          }
+            runGrid.appendChild(card);
+          });
+
+          state.textContent = `${runs.length} published run${runs.length === 1 ? "" : "s"} loaded.`;
         })
         .catch((error) => {
-          state.className = "error";
-          state.textContent = `Failed to load locomo/index.json: ${error.message}`;
+          heroCopy.textContent = "The archive could not be loaded from locomo/index.json.";
+          state.textContent = `Failed to load benchmark data: ${error.message}`;
         });
     </script>
   </body>
